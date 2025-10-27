@@ -1,14 +1,13 @@
-# 🪑 5chairs Questionnaire - Portfolio Project
+# 🪑 5chairs Questionnaire
+Portfolio project based on real production work for Telegram dating service [5chairs](https://5chairs.app)
 
 **Live Demo:** https://tg-questionnaire.netlify.app
 
-Portfolio project based on real production work for Telegram dating service [5chairs](https://5chairs.app)
-
 ## Project Overview
 
-This is a standalone, portfolio-ready version of the questionnaire that was originally part of the 5chairs Telegram dating service. The original production version was an active landing page for Instagram advertising, connecting real users to a Telegram bot via questionnaire completion.
+This is a standalone, portfolio version of the questionnaire that was originally part of the 5chairs Telegram dating service. The original production version was an active landing page for Instagram advertising, connecting real users to a Telegram bot via questionnaire completion.
 
-### What Was This?
+### What Was It?
 
 - **Production landing page** for Instagram ad campaigns
 - **Real-time authentication** via Telegram Login API
@@ -28,7 +27,7 @@ This standalone version demonstrates the same design and animation work but uses
 
 - **Interactive preloader** with animated chair sprites
 - **Smooth page transitions** between questionnaire steps
-- **Animated background** with dynamic line animations
+- **Animated background** with dynamic line animations(including my favourite animation - dotted lines that choose a random rounded path each time and do it beautifully and predictably)
 - **Smart center positioning** for question cards on any screen size
 - **Confetti celebration** effects on completion
 - **Responsive design** across all devices
@@ -164,7 +163,3 @@ This questionnaire was the entry point for the entire user journey from Instagra
 ## License
 
 This project is for portfolio demonstration purposes. The original 5chairs service is a commercial product.
-
-## Contact
-
-For questions about this portfolio project, visit the [live demo](https://tg-questionnaire.netlify.app).
