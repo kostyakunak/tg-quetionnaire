@@ -1,0 +1,101 @@
+/**
+ * Локальные шрифты для гарантированного отображения
+ * Inter - основной шрифт для всего текста
+ * Comic Sans MS - рукописный шрифт для заголовков и кнопок
+ */
+
+/* Inter Font Family - Self-hosted for consistent rendering across all devices */
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/Inter_18pt-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/Inter_18pt-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/Inter_18pt-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/Inter_18pt-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Comic Sans MS Font Family - Handwritten style for headings and special text */
+@font-face {
+  font-family: "Comic Sans MS";
+  src: url("/assets/fonts/ComicSansMS-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Comic Sans MS";
+  src: url("/assets/fonts/ComicSansMS-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Comic Sans MS";
+  src: url("/assets/fonts/ComicSansMS-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Comic Sans MS";
+  src: url("/assets/fonts/ComicSansMS-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* iOS Safari font optimization */
+html {
+  font-synthesis: none;              /* Prevent iOS from synthesizing fonts */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;    /* Prevent text scaling on iOS */
+  font-variant-ligatures: none;      /* Disable ligatures for consistency */
+  font-feature-settings: "kern" 1;   /* Enable kerning */
+}
+
+/* Apply font synthesis prevention to all elements */
+*, *::before, *::after {
+  font-synthesis: none !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+
+/* Font family variables - matching original design */
+:root {
+  --font-primary: "Inter", sans-serif;
+  --font-handwritten: "ComicSansMS", "Comic Neue", "Comic Sans MS", cursive;
+}
+
+/* Apply font to body */
+body {
+  font-family: var(--font-primary);
+}

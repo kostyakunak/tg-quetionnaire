@@ -1,0 +1,18 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Портфолио-версия: без backend-прокси. Если в будущем понадобится API —
+# добавьте редирект сюда или используйте собственный endpoint.
+
+# Кэширование ассетов
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Кэширование HTML
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

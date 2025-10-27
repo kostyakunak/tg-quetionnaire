@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анкета — Portfolio</title>
+    <meta name="description" content="Заполни анкету и найди свою компанию на встрече 5chairs">
+    <link rel="canonical" href="/questionnaire">
+    <!-- Локальные шрифты для гарантированного отображения -->
+    <link rel="stylesheet" href="/src/assets/fonts/fonts.css">
+    <link rel="stylesheet" href="/src/style.css">
+    <!-- Template source стили для клеточного фона -->
+    <link rel="stylesheet" href="/src/styles-net/template-index.css">
+    <link rel="stylesheet" href="/src/styles-net/template-globals.css">
+    <style>
+        /* Preloader overlay */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #ffffff;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            opacity: 1;
+            transition: background-color 700ms ease, opacity 1000ms ease;
+            --radius: 75px; /* радиус круга */
+            --face-offset: 0deg; /* ориентация к центру (если понадобится) */
+            --angle-offset: 18deg; /* глобальный сдвиг по кругу */
+        }
+
+        #preloader .ring {
+            position: relative;
+            width: calc(var(--radius) * 2);
+            height: calc(var(--radius) * 2);
+        }
+
+        #preloader .node {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 56px;
+            height: 56px;
+            margin: -28px 0 0 -28px; /* выравниваем центр узла по центру круга */
+            transform-origin: 0 0;
+        }
+
+        /* Внутренняя обертка, чтобы «повернуть лицом» к центру */
+        #preloader .sprite {
+            width: 56px;
+            height: 56px;
+            transform: rotate(var(--face-offset));
+            transform-origin: center center;
+        }
+
+        /* Расставляем узлы равномерно по кругу: 5 элементов → каждые 72deg */
+        /* Порядок с вершины по часовой: c1(верх), c2(право‑верх), c3(право‑низ), c4(лево‑низ), c5(лево‑верх) */
+        #preloader .node.c1 { transform: rotate(calc(198deg + var(--angle-offset))) translate(0, calc(-1 * var(--radius))) rotate(calc(-198deg - var(--angle-offset))); }
+        #preloader .node.c2 { transform: rotate(calc(-90deg + var(--angle-offset))) translate(0, calc(-1 * var(--radius))) rotate(calc( 90deg - var(--angle-offset))); }
+        #preloader .node.c3 { transform: rotate(calc( -18deg + var(--angle-offset))) translate(0, calc(-1 * var(--radius))) rotate(calc( 18deg - var(--angle-offset))); }
+        #preloader .node.c4 { transform: rotate(calc(  54deg + var(--angle-offset))) translate(0, calc(-1 * var(--radius))) rotate(calc(-54deg - var(--angle-offset))); }
+        #preloader .node.c5 { transform: rotate(calc( 126deg + var(--angle-offset))) translate(0, calc(-1 * var(--radius))) rotate(calc(-126deg - var(--angle-offset))); }
+
+        /* Все SVG уже повернуты корректно → единый 0deg */
+        #preloader .node .sprite { transform: rotate(0deg); }
+
+        /* Акцент на увеличении: главный стул с большей амплитудой */
+        #preloader .node.c1 .chair { animation-name: pulse-strong; }
+
+        @keyframes pulse-strong {
+            0%   { transform: scale(1); animation-timing-function: cubic-bezier(.35,.85,.2,1); }
+            35%  { transform: scale(1.45); animation-timing-function: cubic-bezier(.4,0,.2,1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Быстрая ручная коррекция: глобально проверни на несколько градусов при необходимости */
+        /* пример: #preloader { --angle-offset: -10deg; } */
+
+        #preloader .chair {
+            width: 56px;
+            height: 56px;
+            will-change: transform;
+            transform-origin: center center;
+            animation: pulse 1s linear infinite;
+            animation-play-state: paused;
+            display: block;
+        }
+
+        @keyframes pulse {
+            0%   { transform: scale(1); animation-timing-function: cubic-bezier(.35,.85,.2,1); }
+            35%  { transform: scale(1.3); animation-timing-function: cubic-bezier(.4,0,.2,1); }
+            100% { transform: scale(1); }
+        }
+
+        /* JS‑driven chaining; delays handled in script */
+
+        /* В тёмной теме фон прелоадера всегда белый, не зависит от темы */
+        .dark-theme #preloader { background: #ffffff; }
+
+        /* White wipe state forces solid white and hides content before global fade */
+        #preloader.wipe { background: #ffffff !important; }
+        .dark-theme #preloader.wipe { background: #ffffff !important; }
+        #preloader.wipe .ring, #preloader.wipe .hint { opacity: 0; transition: opacity 700ms ease; }
+
+        /* Slow-load hint */
+        #preloader .hint {
+            position: absolute;
+            left: 0; right: 0; bottom: 32px;
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+            padding: 0 16px;
+            display: none;
+        }
+
+        #preloader .hint.visible { display: block; }
+    </style>
+</head>
+    <body class="stage-start bg-template-cellular">
+    <div id="preloader" aria-hidden="true">
+        <div class="ring">
+            <div class="node c1"><div class="sprite"><img src="/assets/chairs/chair1.svg" class="chair" alt="Стул 1"></div></div>
+            <div class="node c2"><div class="sprite"><img src="/assets/chairs/chair2.svg" class="chair" alt="Стул 2"></div></div>
+            <div class="node c3"><div class="sprite"><img src="/assets/chairs/chair3.svg" class="chair" alt="Стул 3"></div></div>
+            <div class="node c4"><div class="sprite"><img src="/assets/chairs/chair4.svg" class="chair" alt="Стул 4"></div></div>
+            <div class="node c5"><div class="sprite"><img src="/assets/chairs/chair5.svg" class="chair" alt="Стул 5"></div></div>
+        </div>
+        <div id="preloaderHint" class="hint">Загрузка задерживается… Проверьте интернет</div>
+    </div>
+    <div id="app-container">
+        <!-- Questionnaire Section -->
+        <section id="questionnaire">
+            <!-- Канвас с анимированными линиями -->
+            <canvas id="animated-bg-canvas"></canvas>
+            <div class="questionnaire-header">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="question-counter">
+                    <span id="currentQuestion">1</span> / <span id="totalQuestions">12</span>
+                </div>
+            </div>
+            <!-- Paper scroll container will be created dynamically -->
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="profile hidden">
+            <div class="container">
+                <div class="profile-header">
+                    <h2>Последние штрихи</h2>
+                    <p>Нам нужно знать, как к тебе обращаться</p>
+                </div>
+
+                <div class="profile-form">
+                    <div class="form-group">
+                        <label for="profileName">Имя *</label>
+                        <input type="text" id="profileName" required placeholder="Как тебя зовут?">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profileAge">Возраст *</label>
+                        <input type="number" id="profileAge" required min="18" max="100" placeholder="Сколько тебе лет?">
+                    </div>
+
+                    <button id="completeButton" class="cta-button">
+                        Завершить и войти через Telegram
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Telegram Login Section -->
+        <section id="telegramLogin" class="telegram-login hidden">
+            <div class="container">
+                <div class="login-content">
+                    <div class="success-title-container">
+                        <h1 class="success-title">Анкета заполнена!</h1>
+                        <!-- изумрудный салют -->
+                        <canvas id="success-confetti" aria-hidden="true"></canvas>
+                    </div>
+                    <p>Теперь давай создадим тебе аккаунт🤩</p>
+                    
+        <div id="telegramLoginWidget" class="telegram-widget-container">
+            <!-- Direct redirect button instead of iframe widget -->
+            <button id="telegramLoginButton" class="telegram-login-button">
+                Войти через
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="white" class="telegram-icon">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.682 8.492l-1.932 9.108c-.144.648-.528.816-1.08.504l-2.988-2.208-1.44 1.392c-.156.156-.288.288-.588.288l.216-3.06 5.568-5.028c.24-.216-.048-.336-.372-.12l-6.888 4.332-2.964-.924c-.648-.204-.66-.648.132-.96l11.64-4.488c.54-.204.84.12.84.96z" transform="translate(0, 0)"/>
+                </svg>
+            </button>
+        </div>
+                    <!-- Тестовая кнопка удалена для продакшена -->
+                    
+                    <div class="login-explanation">
+                        <p><strong>Зачем нужен Telegram?</strong></p>
+                        <ul>
+                            <li>Так удобнее регистрироваться</li>
+                            <li>Мы пришлём приглашение на встречу</li>
+                            <li>Мы создадим для тебя аккаунт 5chairs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Section -->
+        <section id="success" class="success hidden">
+            <div class="container">
+                <div class="success-content">
+                    
+                    <h2>Готово!</h2>
+                    
+                    <div class="next-steps">
+                        <h3>Что дальше?</h3>
+                        <div class="step step-1">
+                            <span class="step-number">1</span>
+                            <p>Выбери удобную дату для встречи</p>
+                        </div>
+                        <div class="step step-2">
+                            <span class="step-number">2</span>
+                            <p>Мы пришлём уведомление, когда подберем тебе компанию</p>
+                        </div>
+                        <div class="step step-3">
+                            <span class="step-number">3</span>
+                            <p>Приходи на встречу и знакомься с интересными людьми</p>
+                        </div>
+                    </div>
+
+                    <a
+                        id="botLink"
+                        class="telegram-login-button"
+                        href="#"
+                        target="_self"
+                        rel="noopener"
+                    >
+                        Открыть бот в
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="white" class="telegram-icon">
+                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.682 8.492l-1.932 9.108c-.144.648-.528.816-1.08.504l-2.988-2.208-1.44 1.392c-.156.156-.288.288-.588.288l.216-3.06 5.568-5.028c.24-.216-.048-.336-.372-.12l-6.888 4.332-2.964-.924c-.648-.204-.66-.648.132-.96l11.64-4.488c.54-.204.84.12.84.96z" transform="translate(0, 0)"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+<script>
+const preloader = document.getElementById('preloader');
+const preloaderHint = document.getElementById('preloaderHint');
+const chainNodes = Array.from(document.querySelectorAll('#preloader .node .chair'));
+let chainIdx = 0;
+const CHAIN_COOLDOWN_MS = 350;
+
+function startChainLoop() {
+    if (!chainNodes.length) return;
+    chainNodes.forEach(el => {
+        el.style.animationPlayState = 'paused';
+        el.style.animationDelay = '0s';
+    });
+    triggerNext();
+}
+
+function triggerNext() {
+    const el = chainNodes[chainIdx];
+    el.style.animation = 'none';
+    void el.offsetWidth;
+    el.style.animation = 'pulse 1s linear 1 both';
+    if (el.closest('.node')?.classList.contains('c1')) {
+        el.style.animation = 'pulse-strong 1s linear 1 both';
+    }
+    chainIdx = (chainIdx + 1) % chainNodes.length;
+    setTimeout(triggerNext, CHAIN_COOLDOWN_MS);
+}
+
+let loadTimeout = null;
+
+function hidePreloader() {
+    try {
+        if (!preloader || preloader.style.display === 'none') return;
+        if (loadTimeout) { clearTimeout(loadTimeout); loadTimeout = null; }
+
+        const WIPE_MS = 600;
+        let startedOpacity = false;
+        const startOpacity = () => {
+            if (startedOpacity) return;
+            startedOpacity = true;
+            preloader.style.opacity = '0';
+        };
+
+        const beforeBg = getComputedStyle(preloader).getPropertyValue('background-color');
+        preloader.classList.add('wipe');
+        const afterBg = getComputedStyle(preloader).getPropertyValue('background-color');
+
+        if (beforeBg.trim() !== afterBg.trim()) {
+            const onBgTransitionEnd = (ev) => {
+                if (ev.target !== preloader || ev.propertyName !== 'background-color') return;
+                preloader.removeEventListener('transitionend', onBgTransitionEnd);
+                startOpacity();
+            };
+            preloader.addEventListener('transitionend', onBgTransitionEnd);
+            setTimeout(startOpacity, WIPE_MS + 50);
+        } else {
+            setTimeout(startOpacity, WIPE_MS);
+        }
+
+        const onOpacityEnd = (ev) => {
+            if (ev.target !== preloader || ev.propertyName !== 'opacity') return;
+            preloader.removeEventListener('transitionend', onOpacityEnd);
+            preloader.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
+        preloader.addEventListener('transitionend', onOpacityEnd);
+    } catch (e) {
+        console.error('hidePreloader error:', e);
+    }
+}
+
+// Start preloader animation
+loadTimeout = setTimeout(() => { if (preloaderHint) preloaderHint.classList.add('visible'); }, 10000);
+startChainLoop();
+
+// Note: Call hidePreloader() when the questionnaire has finished initializing
+</script>
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>

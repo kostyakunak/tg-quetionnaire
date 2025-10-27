@@ -1,0 +1,3595 @@
+/* Game Lobby Styles */
+.game-lobby {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: var(--paper-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.lobby-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.lobby-header h2 {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.meeting-info {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.players-section h3 {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.players-list {
+    margin-bottom: 30px;
+}
+
+.player-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 8px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.player-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent-blue);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 12px;
+}
+
+.player-info {
+    flex: 1;
+}
+
+.player-name {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.player-status {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.status-you {
+    color: var(--accent-green);
+    font-weight: 500;
+}
+
+.vote-status {
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: 8px;
+}
+
+.vote-yes {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+.vote-no {
+    background: #ffe8e8;
+    color: #c62828;
+}
+
+.no-players {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 40px;
+    font-style: italic;
+}
+
+.lobby-controls {
+    margin-bottom: 20px;
+}
+
+.btn-leave {
+    background: #f44336;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+}
+
+.btn-leave:hover {
+    background: #d32f2f;
+}
+
+.early-start-section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 15px;
+}
+
+.early-start-section h4 {
+    margin: 0 0 15px 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+.vote-stats {
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.vote-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-vote {
+    flex: 1;
+    padding: 10px 15px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    color: var(--text-primary);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.btn-vote:hover:not(:disabled) {
+    border-color: var(--accent-blue);
+    background: #f8f9ff;
+}
+
+.btn-vote.active {
+    border-color: var(--accent-green);
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+.btn-vote:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.consensus-reached {
+    margin-top: 15px;
+    padding: 12px;
+    background: linear-gradient(135deg, #e8f5e8, #f0f8ff);
+    border: 1px solid #4caf50;
+    border-radius: 6px;
+    text-align: center;
+    color: #2e7d32;
+    font-weight: 500;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
+
+.status-info {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.status-info p {
+    margin: 5px 0;
+}
+
+/* Test Panel Styles */
+#test-panel {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 350px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10000;
+    max-height: 80vh;
+    overflow: hidden;
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.test-panel-header {
+    background: #f5f5f5;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.test-panel-header h4 {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.test-toggle {
+    background: none;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 2px 6px;
+}
+
+.test-panel.collapsed .test-panel-content {
+    display: none;
+}
+
+.test-panel.collapsed .test-toggle {
+    transform: rotate(180deg);
+}
+
+.test-panel-content {
+    max-height: calc(80vh - 40px);
+    overflow-y: auto;
+}
+
+.test-section {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.test-section:last-child {
+    border-bottom: none;
+}
+
+.test-section h5 {
+    margin: 0 0 8px 0;
+    font-size: 13px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#session-info, #game-params {
+    background: #f9f9f9;
+    padding: 8px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+#open-window-btn {
+    background: #4caf50;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+#open-window-btn:hover {
+    background: #45a049;
+}
+
+.window-list {
+    margin-top: 8px;
+}
+
+.window-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f0f0f0;
+    padding: 4px 8px;
+    margin-bottom: 4px;
+    border-radius: 3px;
+}
+
+.window-item button {
+    background: #f44336;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logs-container {
+    max-height: 200px;
+    overflow-y: auto;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#clear-logs {
+    width: 100%;
+    background: #ff9800;
+    color: white;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+#clear-logs:hover {
+    background: #f57c00;
+}
+
+.logs {
+    padding: 8px;
+    max-height: 160px;
+    overflow-y: auto;
+}
+
+.log-entry {
+    margin-bottom: 4px;
+    padding: 2px 0;
+    border-left: 3px solid transparent;
+}
+
+.log-info {
+    border-left-color: #2196f3;
+}
+
+.log-warn {
+    border-left-color: #ff9800;
+}
+
+.log-error {
+    border-left-color: #f44336;
+}
+
+.log-time {
+    color: #666;
+    margin-right: 8px;
+}
+
+.log-level {
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.log-message {
+    word-break: break-all;
+}
+
+/* Hide test panel in production */
+body:not(.test-mode) #test-panel {
+    display: none !important;
+}
+/* Import handwritten font */
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+
+/* ===== ИЗМЕНЕНИЯ ФОНА АНКЕТЫ ===== */
+/* Изменен цвет --paper-beige с #f5f1e8 на #fffbf1 для более светлого пепельного фона */
+/* Это влияет на:
+   - body.is-questionnaire (основной фон этапа анкеты)
+   - #questionnaire (контейнер анкеты)
+   - .profile (секция профиля)
+   - .value-proposition::before и .intro-message::before (эффекты загнутых углов)
+*/
+
+/* ===== GLOBAL STYLES ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: #2c2c2c;
+    background: #f8f6f3;
+    position: relative;
+}
+
+/* Prevent horizontal overflow globally */
+#app {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+:root {
+    --page-gutter: clamp(18px, 5vw, 28px); /* боковые поля страницы */
+    --card-max: 465px;                      /* макс ширина карточки */
+    --redline-offset: 90px;
+    /* Paper-inspired color palette */
+    --paper-cream: #f7f3e9;
+    --paper-white: #fefcf7;
+    --paper-yellow: #fff8dc;
+    --paper-beige: #fefbf3; /* Изменено с #f5f1e8 на #fefbf5 для более светлого пепельного фона на этапе анкеты */
+    --warm-brown: #8b6f47;
+    --deep-brown: #5d4e37;
+    --ink-blue: #2c3e50;
+    --pencil-gray: #6b7280;
+    --eraser-pink: #ffeaa7;
+    --highlighter-yellow: #fdcb6e;
+    --sticky-yellow: #fff8dc;
+    --sticky-green: #a8e6cf;
+    --sticky-green-dark: #7dd3a0;
+    --sticky-blue: #81ecec;
+    --sticky-light-blue: #b8e6f0;
+    --sticky-orange: #fab1a0;
+    --shadow-paper: rgba(139, 111, 71, 0.15);
+    --shadow-deep: rgba(93, 78, 55, 0.25);
+    
+    /* Template-inspired warm colors - ТОЧНЫЕ oklch значения из template source */
+    --amber-50: oklch(.987 .022 95.277);
+    --amber-100: oklch(.962 .059 95.617);
+    --amber-200: oklch(.924 .12 95.746);
+    --amber-300: oklch(.879 .169 91.605);
+    --amber-400: oklch(.828 .189 84.429);
+    --amber-500: oklch(.769 .188 70.08);
+    --amber-600: oklch(.666 .179 58.318);
+    --amber-700: oklch(.564 .169 48.252);
+    --amber-800: oklch(.462 .159 38.186);
+    --amber-900: oklch(.36 .149 28.12);
+    --orange-50: oklch(.98 .016 73.684);
+    --red-50: oklch(.971 .013 17.38);
+    
+    /* Hex fallbacks для старых браузеров */
+    --amber-50-hex: #fffbeb;
+    --amber-100-hex: #fef3c7;
+    --amber-200-hex: #fde68a;
+    --amber-300-hex: #fcd34d;
+    --amber-400-hex: #fbbf24;
+    --amber-500-hex: #f59e0b;
+    --amber-600-hex: #d97706;
+    --amber-700-hex: #b45309;
+    --amber-800-hex: #92400e;
+    --amber-900-hex: #78350f;
+    --orange-50-hex: #fff7ed;
+    --red-50-hex: #fef2f2;
+    --cyan-400: #22d3ee;
+    --cyan-500: #06b6d4;
+    
+    /* Typography - handwritten feel */
+    --font-primary: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    --font-handwritten: 'Kalam', 'Comic Sans MS', cursive;
+    
+    /* Spacing */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+    
+    /* Paper textures and effects */
+    --paper-texture: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a574' fill-opacity='0.03'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3Ccircle cx='53' cy='13' r='1'/%3E%3Ccircle cx='19' cy='23' r='1'/%3E%3Ccircle cx='41' cy='31' r='1'/%3E%3Ccircle cx='13' cy='43' r='1'/%3E%3Ccircle cx='47' cy='47' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    
+/* Template warm grid texture */
+--warm-grid-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='%23d4a574' fill-opacity='0.15'%3E%3Cpath d='M15 30c0-8.284 6.716-15 15-15s15 6.716 15 15-6.716 15-15 15-15-6.716-15 15zM5 5h50v50H5z'/%3E%3C/g%3E%3C/svg%3E");
+
+/* Template source cellular background texture */
+--template-cellular-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='%23fff8ec' fill-opacity='1.0'%3E%3Cpath d='M15 30c0-8.284 6.716-15 15-15s15 6.716 15 15-6.716 15-15 15-15-6.716-15 15zM5 5h50v50H5z'/%3E%3C/g%3E%3C/svg%3E");
+    
+    /* Transitions */
+    --transition-smooth: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-paper: 0.4s ease-out;
+}
+
+/* Import handwritten font - moved to top */
+
+body {
+    font-family: var(--font-primary);
+    color: var(--ink-blue);
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+    transition: all var(--transition-smooth);
+}
+
+/* Отключаем фон для элементов с классом no-background */
+body.no-background {
+    background: none !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+/* Stage-based background system with unified switching */
+:root {
+    --stage-bg-image: var(--paper-texture); /* значение по умолчанию */
+    --stage-bg-color: var(--paper-white);
+}
+
+body {
+    background-color: var(--stage-bg-color);
+    background-image: var(--stage-bg-image);
+    background-size: 60px 60px;
+    background-attachment: fixed;
+}
+
+/* Пресеты фонов с принудительным применением */
+body[data-bg="paper"] { 
+    --stage-bg-image: var(--paper-texture) !important;
+    --stage-bg-color: var(--paper-white) !important;
+    background-color: var(--paper-white) !important;
+    background-image: var(--paper-texture) !important;
+}
+
+/* Фон для этапа intro - градиентный фон как на главной странице */
+body.stage-intro {
+    background: linear-gradient(135deg, var(--amber-50-hex) 0%, var(--orange-50-hex) 50%, var(--red-50-hex) 100%) !important;
+    background: linear-gradient(135deg, var(--amber-50) 0%, var(--orange-50) 50%, var(--red-50) 100%) !important;
+    background-size: 60px 60px !important;
+    background-attachment: fixed !important;
+    position: relative;
+}
+
+/* Клеточный паттерн для body.stage-intro */
+body.stage-intro::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.30;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='%23fef4eb' fill-opacity='1.0'%3E%3Cpath d='M15 30c0-8.284 6.716-15 15-15s15 6.716 15 15-6.716 15-15 15-15-6.716-15 15zM5 5h50v50H5z'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 60px 60px;
+    background-repeat: repeat;
+    filter: contrast(1.2) brightness(0.9);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Фон для страницы анкеты (stage-questionnaire) - пепельный фон с текстурой */
+/* Использует --paper-beige (#fffbf1) вместо градиентного фона других этапов */
+body.is-questionnaire {
+    background: var(--paper-beige) !important;
+    background-image: var(--paper-texture) !important;
+    background-size: 60px 60px !important;
+    background-attachment: fixed !important;
+}
+
+/* Клеточный фон - чистый CSS */
+.bg-notebook {
+    background:
+        /* горизонтальные линии */
+        linear-gradient(rgba(25,35,55,.05) 1px, transparent 1px) 0 0 / 24px 24px,
+        /* вертикальные линии */
+        linear-gradient(90deg, rgba(25,35,55,.05) 1px, transparent 1px) 0 0 / 24px 24px,
+        /* базовый цвет */
+        #b29f86;
+}
+
+/* Клеточный фон с делениями (как в тетради) */
+.bg-notebook-grid {
+    background:
+        /* основные клетки */
+        linear-gradient(rgba(25,35,55,.06) 1px, transparent 1px) 0 0 / 24px 24px,
+        linear-gradient(90deg, rgba(25,35,55,.06) 1px, transparent 1px) 0 0 / 24px 24px,
+        /* деления каждые 5 клеток */
+        linear-gradient(rgba(25,35,55,.025) 1px, transparent 1px) 0 0 / 120px 120px,
+        linear-gradient(90deg, rgba(25,35,55,.025) 1px, transparent 1px) 0 0 / 120px 120px,
+        /* базовый цвет */
+        #b29f86;
+}
+
+body[data-bg="warm-grid"] { 
+    --stage-bg-image: var(--warm-grid-texture) !important;
+    --stage-bg-color: linear-gradient(135deg, var(--amber-50-hex) 0%, var(--orange-50-hex) 50%, var(--red-50-hex) 100%) !important;
+    background: linear-gradient(135deg, var(--amber-50-hex) 0%, var(--orange-50-hex) 50%, var(--red-50-hex) 100%) !important;
+    background: linear-gradient(135deg, var(--amber-50) 0%, var(--orange-50) 50%, var(--red-50) 100%) !important;
+    background-image: var(--warm-grid-texture) !important;
+    background-size: 60px 60px !important;
+    background-attachment: fixed !important;
+}
+
+/* Template source cellular background - точная копия из PaymentPage.tsx */
+body[data-bg="template-cellular"] { 
+    --stage-bg-image: var(--template-cellular-texture) !important;
+    --stage-bg-color: linear-gradient(135deg, var(--amber-50-hex) 0%, var(--orange-50-hex) 50%, var(--red-50-hex) 100%) !important;
+    background: linear-gradient(135deg, var(--amber-50-hex) 0%, var(--orange-50-hex) 50%, var(--red-50-hex) 100%) !important;
+    background: linear-gradient(135deg, var(--amber-50) 0%, var(--orange-50) 50%, var(--red-50) 100%) !important;
+    background-image: var(--template-cellular-texture) !important;
+    background-size: 60px 60px !important;
+    background-attachment: fixed !important;
+}
+
+/* Класс для прямого применения клеточного фона из template source - ТОЧНАЯ КОПИЯ */
+.bg-template-cellular {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background-image: linear-gradient(135deg, var(--amber-50-hex) 0%, var(--orange-50-hex) 50%, var(--red-50-hex) 100%);
+    background-image: linear-gradient(135deg, var(--amber-50) 0%, var(--orange-50) 50%, var(--red-50) 100%);
+}
+
+/* Оверлей-сетка точно как в template source - отдельный div */
+.bg-template-cellular::before {
+    content: "";
+    position: fixed;           /* было absolute */
+    inset: 0;
+    opacity: 0.30;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='%23d4a574' fill-opacity='0.05'%3E%3Cpath d='M15 30c0-8.284 6.716-15 15-15s15 6.716 15 15-6.716 15-15 15-15-6.716-15 15zM5 5h50v50H5z'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 60px 60px !important;              /* фиксируем размер клетки */
+    background-repeat: repeat;
+    filter: contrast(1.2) brightness(0.9);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Обеспечиваем совместимость с Tailwind CSS */
+.bg-template-cellular,
+body[data-bg="template-cellular"] {
+    /* Переопределяем Tailwind переменные для нашего фона */
+    --tw-bg-opacity: 1;
+    background-color: transparent !important;
+}
+
+/* Убираем конфликты с Tailwind утилитами */
+.bg-template-cellular * {
+    /* Сохраняем оригинальные цвета текста */
+    color: inherit;
+}
+
+/* Контент поверх фона */
+body.bg-template-cellular > #app { 
+    position: relative; 
+    z-index: 1; 
+}
+
+/* Убираем шум/виньетку на этих страницах */
+body.bg-template-cellular.stage-start::before,
+body.bg-template-cellular.stage-intro::before,
+body.bg-template-cellular.stage-questionnaire::before { 
+    content: none !important; 
+}
+
+/* Скрываем клеточный фон на стадиях intro и questionnaire */
+body.stage-intro .min-h-screen .absolute.inset-0.opacity-30,
+body.stage-questionnaire .min-h-screen .absolute.inset-0.opacity-30 {
+    display: none !important;
+}
+
+/* На всякий случай — не даём .hero добавлять свой фон */
+body.bg-template-cellular .hero { 
+    background: transparent !important; 
+}
+
+/* Специальные стили для карточек на новом фоне */
+.bg-template-cellular .intro-card,
+.bg-template-cellular .profile-card {
+    background: rgba(254, 251, 235, 0.9) !important; /* hex fallback */
+    background: oklch(from var(--amber-50) l c h / 0.9) !important; /* oklch с прозрачностью */
+    border: 3px solid var(--amber-300) !important;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 12px 40px rgba(180, 83, 9, 0.25) !important;
+    transform: rotate(-1deg) !important;
+}
+
+/* Paper grain overlay for notebook stages */
+body.stage-start::before,
+body.stage-questionnaire::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(139, 111, 71, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(93, 78, 55, 0.02) 0%, transparent 50%),
+        linear-gradient(45deg, transparent 49%, rgba(139, 111, 71, 0.01) 50%, transparent 51%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Убираем дополнительный overlay для intro - используем только основной фон */
+
+/* Stage-specific card styling */
+body.stage-intro .intro-card,
+body.stage-intro .profile-card {
+    background: rgba(254, 251, 235, 0.9) !important; /* hex fallback */
+    background: oklch(from var(--amber-50) l c h / 0.9) !important; /* oklch с прозрачностью */
+    border: 3px solid var(--amber-300) !important;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 12px 40px rgba(180, 83, 9, 0.25) !important;
+    transform: rotate(-1deg) !important;
+}
+
+body.stage-intro .cta-button {
+    background: linear-gradient(145deg, var(--amber-500), var(--amber-600)) !important;
+    box-shadow: 0 4px 15px rgba(180, 83, 9, 0.3), -2px -2px 8px rgba(245, 158, 11, 0.1) !important;
+}
+
+body.stage-intro .cta-button:hover {
+    background: linear-gradient(145deg, var(--amber-600), var(--amber-700)) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(180, 83, 9, 0.4), -3px -3px 12px rgba(245, 158, 11, 0.15) !important;
+}
+
+.container {
+    width: 100%;
+    max-width: min(1200px, 100vw);
+    margin: 0 auto;
+    padding: 0 16px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Smart margin for questionnaire content to maintain right spacing from notebook edge */
+body.is-questionnaire .container {
+    max-width: min(1200px, calc(100vw - 60px));
+}
+
+/* Smart margin for questionnaire card container - основной контент анкеты */
+body.is-questionnaire .question-card-container {
+    padding-right: 60px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: var(--space-8) 0;
+    background: transparent; /* Убираем фон, чтобы был виден клеточный фон */
+}
+
+/* Spiral binding effect - show only on start stage */
+body.stage-start .hero::before {
+    content: '';
+    position: absolute;
+    left: 80px; /* Same position as red line */
+    top: 0;
+    bottom: 0;
+    width: 9px;
+    background: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="9" height="102" viewBox="0 0 9 102"><defs><pattern id="dash" x="0" y="0" width="9" height="102" patternUnits="userSpaceOnUse"><rect x="0" y="0" width="9" height="51" rx="4.5" fill="%238b6f47"/></pattern></defs><rect width="9" height="102" fill="url(%23dash)"/></svg>') repeat-y;
+    background-size: 9px 102px;
+    animation: dotted-line-move-down 3s infinite linear;
+    z-index: 1;
+}
+
+/* Dotted line for question slides on intro stage */
+body.stage-intro .question-slide::before {
+    content: '';
+    position: absolute;
+    left: 80px;
+    top: 0;
+    bottom: 0;
+    width: 9px;
+    background: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="9" height="102" viewBox="0 0 9 102"><defs><pattern id="dash" x="0" y="0" width="9" height="102" patternUnits="userSpaceOnUse"><rect x="0" y="0" width="9" height="51" rx="4.5" fill="%238b6f47"/></pattern></defs><rect width="9" height="102" fill="url(%23dash)"/></svg>') repeat-y;
+    background-size: 9px 102px;
+    animation: dotted-line-move-down 3s infinite linear;
+    z-index: 1;
+}
+
+/* Отключаем спиральные эффекты для клеточного фона */
+body.bg-template-cellular .hero::before,
+body.bg-template-cellular .hero::after,
+body.bg-template-cellular .intro-content-wrapper::before {
+    display: none !important;
+}
+
+/* НЕ скрываем горизонтальные линии тетради на этапе анкеты */
+body.bg-template-cellular.stage-questionnaire .question-slide::before {
+    display: block !important;
+}
+
+/* Адаптивность для пунктирной линии - меньшие размеры на мобильных устройствах */
+@media (max-width: 768px) {
+    body.stage-start .hero::before,
+    body.stage-intro .question-slide::before {
+        width: 6px;
+        background: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="6" height="68" viewBox="0 0 6 68"><defs><pattern id="dash" x="0" y="0" width="6" height="68" patternUnits="userSpaceOnUse"><rect x="0" y="0" width="6" height="34" rx="3" fill="%238b6f47"/></pattern></defs><rect width="6" height="68" fill="url(%23dash)"/></svg>') repeat-y;
+        background-size: 6px 68px;
+        animation: dotted-line-move-down-tablet 3s infinite linear;
+    }
+}
+
+@media (max-width: 480px) {
+    body.stage-start .hero::before,
+    body.stage-intro .question-slide::before {
+        width: 4px;
+        background: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="52" viewBox="0 0 4 52"><defs><pattern id="dash" x="0" y="0" width="4" height="52" patternUnits="userSpaceOnUse"><rect x="0" y="0" width="4" height="26" rx="2" fill="%238b6f47"/></pattern></defs><rect width="4" height="52" fill="url(%23dash)"/></svg>') repeat-y;
+        background-size: 4px 52px;
+        animation: dotted-line-move-down-mobile 3s infinite linear;
+    }
+}
+
+/* Hole punches */
+.hero::after {
+    content: '';
+    position: absolute;
+    left: 52px;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 15px,
+        var(--paper-cream) 15px,
+        var(--paper-cream) 25px
+    );
+    z-index: 2;
+    background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 15px,
+        radial-gradient(circle, var(--paper-cream) 60%, var(--shadow-paper) 70%) 20px
+    );
+}
+
+/* Отключаем hole punches на start stage */
+body.stage-start .hero::after {
+    display: none;
+}
+
+.hero-content {
+    width: 100%;
+    margin-left: 0; /* Убираем отступ слева для клеточного фона */
+    position: relative;
+    z-index: 3;
+    animation: fadeInUp 1s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Для обычного фона возвращаем отступ */
+body:not(.bg-template-cellular) .hero-content {
+    margin-left: 100px;
+}
+
+/* Адаптивность для мобильных устройств - уменьшаем отступ слева для hero-content */
+@media (max-width: 768px) {
+    body:not(.bg-template-cellular) .hero-content {
+        margin-left: 20px;
+    }
+}
+
+/* Для очень маленьких экранов - убираем отступ полностью */
+@media (max-width: 480px) {
+    body:not(.bg-template-cellular) .hero-content {
+        margin-left: 0;
+    }
+}
+
+.logo {
+    margin-bottom: var(--space-16);
+    position: relative;
+    display: inline-block;
+}
+
+.logo h1 {
+    font-family: var(--font-handwritten);
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--deep-brown);
+    margin-bottom: var(--space-2);
+    transform: rotate(-1deg);
+    text-shadow: 2px 2px 0px rgba(139, 111, 71, 0.1);
+    position: relative;
+}
+
+/* Underline scribble */
+.logo h1::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 16px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 20'%3E%3Cpath d='M5,15 Q50,5 100,12 T200,8 T290,15' stroke='%23fdcb6e' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    opacity: 0.8;
+}
+
+.tagline {
+    font-family: var(--font-handwritten);
+    font-size: 1.4rem;
+    color: var(--warm-brown);
+    font-weight: 400;
+    transform: rotate(0.5deg);
+    margin-left: 20px;
+}
+
+.value-proposition {
+    margin-bottom: var(--space-20);
+    background: var(--paper-white);
+    padding: var(--space-8);
+    border-radius: 8px;
+    box-shadow: 
+        0 4px 8px var(--shadow-paper),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    transform: rotate(-0.5deg);
+    border: 1px solid rgba(139, 111, 71, 0.1);
+    position: relative;
+}
+
+/* Paper fold effect - эффект загнутого угла бумаги */
+/* Использует --paper-beige для создания эффекта бумаги */
+.value-proposition::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(-45deg, transparent 46%, var(--shadow-paper) 50%, var(--paper-beige) 54%);
+    border-radius: 0 8px 0 0;
+}
+
+.value-proposition h2 {
+    font-family: var(--font-handwritten);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--ink-blue);
+    margin-bottom: var(--space-6);
+    line-height: 1.3;
+    transform: rotate(0.3deg);
+}
+
+.description {
+    font-size: 1.1rem;
+    color: var(--pencil-gray);
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* Process steps as sticky notes */
+.process-steps {
+    display: flex;
+    gap: var(--space-6);
+    margin-bottom: var(--space-20);
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.step {
+    position: relative;
+    inline-size: clamp(260px, 32vw, 340px);
+    height: auto !important;
+    min-height: 0;
+    padding: 16px 18px 18px;
+    border-radius: 12px;
+    box-shadow: 0 6px 0 rgba(0,0,0,.08);
+    text-align: center;
+    transition: all var(--transition-paper);
+    cursor: pointer;
+    animation: fadeInUp 1s ease-out both;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.step:nth-child(1) { 
+    background: var(--sticky-yellow);
+    transform: rotate(-3deg);
+    animation-delay: 0.2s;
+    box-shadow: 0 4px 12px rgba(139, 111, 71, 0.3);
+}
+.step:nth-child(2) { 
+    background: var(--sticky-light-blue);
+    transform: rotate(1deg);
+    animation-delay: 0.4s;
+}
+.step:nth-child(3) { 
+    background: var(--sticky-green);
+    transform: rotate(-1deg);
+    animation-delay: 0.6s;
+}
+
+/* «скотч» у заметки */
+.step::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56px;
+    height: 16px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.08);
+    pointer-events: none;
+}
+
+.step::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0.3;
+    transform: rotate(2deg);
+}
+
+.step:hover {
+    transform: rotate(0deg) scale(1.05);
+    z-index: 10;
+    box-shadow: 0 8px 25px var(--shadow-deep);
+}
+
+.step-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+    display: block;
+}
+
+/* Только контент заметок — комик санс */
+.step,
+.step p,
+.step h3,
+.step .step-text {
+    font-family: "ComicSansMS", "Comic Neue", "Comic Sans MS", system-ui, sans-serif;
+    line-height: 1.25;
+}
+
+.step-text h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ink-blue);
+    margin-bottom: var(--space-2);
+    transform: rotate(-0.5deg);
+}
+
+.step-text p {
+    color: var(--pencil-gray);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* CTA Button as paper note */
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 24px auto 0;
+    padding: var(--space-5) var(--space-8);
+    font-family: var(--font-handwritten);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--ink-blue);
+    background: var(--highlighter-yellow);
+    border: 2px solid var(--warm-brown);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition-paper);
+    text-decoration: none;
+    transform: rotate(-1deg);
+    box-shadow: 
+        0 4px 8px var(--shadow-paper),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    position: relative;
+    animation: fadeInUp 1s ease-out 0.8s both;
+}
+
+.cta-button:hover {
+    transform: rotate(0deg) translateY(-3px);
+    box-shadow: 0 8px 20px var(--shadow-deep);
+    background: #ffeaa7;
+}
+
+.cta-button:active {
+    transform: rotate(0deg) translateY(-1px);
+}
+
+/* ===== QUESTIONNAIRE STYLES ===== */
+/* Контейнер анкеты - использует --paper-beige для фона */
+#questionnaire {
+    position: fixed;
+    inset: 0;
+    isolation: isolate;   /* ВАЖНО: изолирует стек наложения внутри секции */
+    background: var(--paper-beige);
+    overflow: hidden;
+}
+
+/* Убираем фон questionnaire на стадии intro - чтобы был виден клеточный фон */
+body.stage-intro #questionnaire,
+body.is-intro #questionnaire {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+/* Весь контент секции — выше канваса */
+.questionnaire-header,
+.questionnaire-scroll-container,
+.question-slide,
+.question-card {
+    position: relative;
+    z-index: 1;
+}
+
+#questionnaire .questionnaire-header {
+    position: fixed !important;
+    z-index: 1 !important;
+}
+
+/* Scroll Animation Container */
+.questionnaire-scroll-container {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: transparent;
+    z-index: 10;
+    box-shadow: 
+        -2px 0 10px var(--shadow-paper),
+        2px 0 10px var(--shadow-paper);
+    z-index: 2;
+}
+
+/* Spiral binding effect for questionnaire - СДЕЛАНО ПРОЗРАЧНЫМ */
+.questionnaire-scroll-container::before {
+    content: '';
+    position: absolute;
+    left: 60px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,  /* ← Изменено с var(--warm-brown) на transparent */
+        transparent 20px,
+        transparent 20px,
+        transparent 40px
+    );
+    z-index: 1;
+}
+
+/* Hole punches for questionnaire */
+.questionnaire-scroll-container::after {
+    content: '';
+    position: absolute;
+    left: 52px;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 15px,
+        var(--paper-white) 15px,
+        var(--paper-white) 25px
+    );
+    z-index: 2;
+    background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 15px,
+        radial-gradient(circle, var(--paper-white) 60%, var(--shadow-paper) 70%) 20px
+    );
+}
+
+/* Question slides for scroll animation */
+.question-slide {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: var(--space-8);
+    padding-top: calc(var(--space-8) + 60px); /* Добавляем отступ сверху для шкалы вопросов */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* ← Добавлено для горизонтального центрирования карточки */
+    background: transparent;
+    transform: translateY(0);
+    opacity: 1;
+    will-change: transform, opacity;
+    z-index: 1; /* В едином контексте с канвасом (z-index: 0) */
+}
+
+/* Ruled paper lines overlay for each slide - горизонтальные линии тетради */
+.question-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(to bottom, transparent 39px, rgba(139, 111, 71, 0.1) 40px, transparent 41px);
+    background-size: 100% 40px;
+    pointer-events: none;
+    z-index: 0; /* Под контентом (z-index: 1), но над фоном */
+}
+
+/* Red margin line for each slide - ONLY show during questionnaire stage */
+.is-questionnaire .question-slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 90px;
+    width: 2px;
+    background: #e74c3c;
+    opacity: 0.3;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Отключаем красную линию на этапах, отличных от questionnaire */
+body:not(.is-questionnaire) .question-slide::after {
+    display: none !important;
+}
+
+.question-slide.current {
+    z-index: 1;
+}
+
+.question-slide.next {
+    z-index: 1;
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+/* Intro content styling */
+.intro-content {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 4;
+}
+
+/* Удалены дублирующиеся правила для .intro-message - теперь объединены выше */
+
+/* Paper fold effect for intro message - эффект загнутого угла для сообщения */
+/* Использует --paper-beige для создания эффекта бумаги */
+.intro-message::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(-45deg, transparent 46%, var(--shadow-paper) 50%, var(--paper-beige) 54%);
+    border-radius: 0 12px 0 0;
+}
+
+/* Greeting text styling with responsive font and border */
+.intro-message .question-text {
+    font-size: 1.8rem;
+    line-height: 1.3;
+    margin-bottom: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    border-radius: 12px;
+    background: rgba(254, 251, 235, 0.1);
+    display: inline-block;
+    transform: rotate(-0.5deg);
+}
+
+/* Special styling only for the greeting question (first question) */
+.intro-message .question-text.greeting-text {
+    border: 2px dashed rgba(139, 111, 71, 0.3);
+}
+
+/* Greeting text outside card */
+.greeting-outside-card {
+    text-align: center;
+    margin-bottom: var(--space-4); /* уменьшен отступ снизу */
+    position: relative;
+    z-index: 4;
+}
+
+/* Привязка к карточке - стабильное позиционирование */
+.greeting-outside-card.anchored-to-card {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 12px);   /* на 12px выше верхнего края карточки */
+    transform: translateX(-50%);
+    width: calc(100vw - 32px);   /* используем viewport width вместо родительского элемента */
+    z-index: 2;                   /* над фоном и декоративными элементами */
+    pointer-events: none;         /* элемент «информационный», клики проходят сквозь */
+    margin-bottom: 0;             /* убираем margin, так как используем absolute позиционирование */
+}
+
+.greeting-outside-card .greeting-text {
+    font-size: 1.8rem;
+    line-height: 1.3;
+    margin-bottom: 0;
+    padding: var(--space-3) var(--space-4);
+    border-radius: 12px;
+    background: rgba(254, 251, 235, 0.1);
+    display: block;
+    width: 100%;
+    transform: rotate(-0.5deg);
+    border: 2px dashed rgba(139, 111, 71, 0.3);
+    font-family: var(--font-handwritten);
+    color: var(--ink-blue);
+    box-sizing: border-box;
+}
+
+/* Responsive font size for mobile */
+@media (max-width: 768px) {
+    .intro-message .question-text {
+        font-size: 1.4rem;
+        padding: var(--space-2) var(--space-3);
+    }
+    
+    .greeting-outside-card .greeting-text {
+        font-size: 1.4rem;
+        padding: var(--space-2) var(--space-3);
+    }
+    
+    .greeting-outside-card {
+        margin-bottom: var(--space-3); /* еще меньше отступ на планшетах */
+    }
+    
+    .greeting-outside-card.anchored-to-card {
+        width: calc(100vw - 16px); /* больше места на планшетах */
+    }
+}
+
+@media (max-width: 480px) {
+    .intro-message .question-text {
+        font-size: 1.2rem;
+        padding: var(--space-2);
+    }
+    
+    .greeting-outside-card .greeting-text {
+        font-size: 1.2rem;
+        padding: var(--space-2);
+    }
+    
+    .greeting-outside-card {
+        margin-bottom: var(--space-2); /* минимальный отступ на мобильных */
+    }
+    
+    .greeting-outside-card.anchored-to-card {
+        width: calc(100vw - 8px); /* максимальное использование пространства на мобильных */
+    }
+}
+
+/* Name input section inside intro-message */
+.intro-message .name-input-section {
+    margin-top: var(--space-6);
+    text-align: center;
+}
+
+.name-question-title {
+    font-family: var(--font-handwritten);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--ink-blue);
+    margin-bottom: var(--space-3);
+    transform: rotate(-1deg);
+}
+
+/* Style the input inside intro-message */
+.intro-message .text-answer {
+    margin-top: var(--space-2);
+}
+
+/* Random color variations for message elements */
+.intro-message.color-pink::before {
+    background: linear-gradient(-45deg, transparent 46%, rgba(255, 182, 193, 0.3) 50%, rgba(255, 192, 203, 0.4) 54%);
+}
+
+.intro-message.color-blue::before {
+    background: linear-gradient(-45deg, transparent 46%, rgba(173, 216, 230, 0.3) 50%, rgba(135, 206, 250, 0.4) 54%);
+}
+
+.intro-message.color-green::before {
+    background: linear-gradient(-45deg, transparent 46%, rgba(144, 238, 144, 0.3) 50%, rgba(152, 251, 152, 0.4) 54%);
+}
+
+.intro-message.color-yellow::before {
+    background: linear-gradient(-45deg, transparent 46%, rgba(255, 255, 224, 0.3) 50%, rgba(255, 250, 205, 0.4) 54%);
+}
+
+.intro-message.color-purple::before {
+    background: linear-gradient(-45deg, transparent 46%, rgba(221, 160, 221, 0.3) 50%, rgba(238, 130, 238, 0.4) 54%);
+}
+
+.intro-steps {
+    margin: var(--space-6) 0;
+    text-align: left;
+}
+
+.intro-steps p {
+    font-family: var(--font-handwritten);
+    font-size: 1.1rem;
+    color: var(--ink-blue);
+    margin-bottom: var(--space-3);
+    line-height: 1.4;
+}
+
+.intro-hint {
+    background: var(--eraser-pink);
+    border-radius: 6px;
+    padding: var(--space-4);
+    border: 1px dashed var(--warm-brown);
+    transform: rotate(0.3deg);
+    margin: var(--space-4) 0;
+    text-align: left;
+}
+
+.intro-hint p {
+    font-size: 0.95rem;
+    color: var(--ink-blue);
+    margin-bottom: var(--space-2);
+    line-height: 1.4;
+}
+
+.intro-hint p:last-child {
+    margin-bottom: 0;
+}
+
+.intro-input {
+    width: 100%;
+    padding: var(--space-4);
+    border: 2px solid rgba(139, 111, 71, 0.3);
+    border-radius: 8px;
+    background: var(--paper-white);
+    font-family: var(--font-handwritten);
+    font-size: 1.2rem;
+    color: var(--ink-blue);
+    text-align: center;
+    transition: all var(--transition-paper);
+    box-shadow: 
+        0 2px 4px var(--shadow-paper),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    transform: rotate(-0.2deg);
+}
+
+.intro-input:focus {
+    outline: none;
+    border-color: var(--warm-brown);
+    background: var(--paper-yellow);
+    transform: rotate(0deg);
+    box-shadow: 
+        0 4px 12px var(--shadow-deep),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.intro-input::placeholder {
+    color: var(--pencil-gray);
+    font-style: italic;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin-top: var(--space-2);
+    font-family: var(--font-handwritten);
+    text-align: center;
+    background: var(--eraser-pink);
+    padding: var(--space-2) var(--space-3);
+    border-radius: 6px;
+    border: 1px dashed #e74c3c;
+    transform: rotate(0.5deg);
+}
+
+/* Ruled paper lines for scroll container - горизонтальные и вертикальные линии тетради */
+.questionnaire-scroll-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        linear-gradient(to bottom, transparent 39px, rgba(139, 111, 71, 0.1) 40px, transparent 41px),
+        linear-gradient(to right, var(--warm-brown) 89px, transparent 90px, transparent 91px);
+    background-size: 100% 40px, 100% 100%;
+    pointer-events: none;
+    z-index: 0; /* Под контентом (z-index: 1), но над фоном */
+}
+
+/* Удалено дублирующееся правило, которое отключало горизонтальные линии */
+
+/* Red margin line for scroll container - ONLY show during questionnaire stage */
+.is-questionnaire .questionnaire-scroll-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 90px;
+    width: 2px;
+    background: #e74c3c;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+/* Paper scroll container */
+.questionnaire-scroll {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;
+    height: 300vh; /* Long paper scroll */
+    background: var(--paper-white);
+    box-shadow: 
+        -2px 0 10px var(--shadow-paper),
+        2px 0 10px var(--shadow-paper);
+    transition: transform var(--transition-smooth);
+}
+
+/* Ruled paper lines */
+.questionnaire-scroll::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(to bottom, transparent 39px, rgba(139, 111, 71, 0.1) 40px, transparent 41px),
+        linear-gradient(to right, var(--warm-brown) 79px, transparent 80px, transparent 81px);
+    background-size: 100% 40px, 100% 100%;
+    pointer-events: none;
+}
+
+/* Red margin line - ONLY show during questionnaire stage */
+.is-questionnaire .questionnaire-scroll::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 80px;
+    width: 2px;
+    background: #e74c3c;
+    opacity: 0.3;
+}
+
+.questionnaire-content {
+    position: relative;
+    padding: var(--space-8) var(--space-8) var(--space-8) 120px;
+    padding-top: calc(var(--space-8) + 60px); /* Добавляем отступ сверху для шкалы вопросов */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform var(--transition-smooth);
+    overflow-y: auto;
+}
+
+/* Question sections positioned vertically */
+.question-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    padding: var(--space-8) var(--space-8) var(--space-8) 120px;
+    padding-top: calc(var(--space-8) + 60px); /* Добавляем отступ сверху для шкалы вопросов */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform var(--transition-smooth), opacity var(--transition-smooth);
+}
+
+/* Animation states for scroll animation */
+.question-section.next {
+    transform: translateY(100vh);
+}
+
+.question-section.prev {
+    transform: translateY(-100vh);
+}
+
+.question-section.active {
+    transform: translateY(0);
+}
+
+/* Legacy question container for non-scroll animation */
+.question-container {
+    position: relative;
+    padding: var(--space-8) var(--space-8) var(--space-8) 120px;
+    padding-top: calc(var(--space-8) + 60px); /* Добавляем отступ сверху для шкалы вопросов */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Card-based animation styles */
+.question-card {
+    background: var(--paper-white);
+    border-radius: 16px;
+    padding: var(--space-4);
+    margin-inline: auto;
+    box-shadow:
+        0 8px 32px var(--shadow-deep),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    border: 2px solid var(--warm-brown);
+    position: relative;
+    width: min(100%, var(--card-max));
+    transform: none !important; /* ← Убираем любые унаследованные трансформы */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+    opacity: 1;
+    z-index: 1 !important; /* В едином контексте с канвасом (z-index: 0) */
+}
+
+/* симметричные поля контейнера анкеты */
+.questionnaire-scroll-container{ padding-inline: var(--page-gutter) !important; }
+
+/* на всякий — убираем старые односторонние паддинги из медиа */
+@media (max-width: 768px){
+  .questionnaire-scroll-container{ padding-inline: var(--page-gutter) !important; }
+}
+
+/* красная линия остаётся на месте относительно слайда */
+.is-questionnaire .question-slide::after{
+  left: var(--redline-offset);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* учёт safe-area на iOS (опционально) */
+@supports (padding: max(0px)){
+  .questionnaire-scroll-container{
+    padding-left:  max(var(--page-gutter), env(safe-area-inset-left));
+    padding-right: max(var(--page-gutter), env(safe-area-inset-right));
+  }
+}
+
+/* Card animation states */
+.question-card.slide-out-up {
+    transform: translateY(-100vh);
+    opacity: 0;
+}
+
+.question-card.slide-out-down {
+    transform: translateY(100vh);
+    opacity: 0;
+}
+
+.question-card.slide-in-up {
+    transform: translateY(100vh);
+    opacity: 0;
+}
+
+.question-card.slide-in-down {
+    transform: translateY(-100vh);
+    opacity: 0;
+}
+
+.question-card.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Paper clip decoration for cards */
+.question-card::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    right: 40px;
+    width: 24px;
+    height: 48px;
+    background: linear-gradient(45deg, #c0c0c0 0%, #e0e0e0 50%, #c0c0c0 100%);
+    border-radius: 12px 12px 4px 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+/* Card container for centering */
+.question-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: var(--space-4);
+    padding-top: calc(var(--space-4) + 60px); /* Добавляем отступ сверху для шкалы вопросов */
+    position: relative;
+}
+
+/* Mobile-first approach: elements outside card by default */
+.question-instruction-mobile {
+    display: block;
+    margin-bottom: var(--space-4);
+}
+
+.question-navigation-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-2);
+    gap: var(--space-2);
+}
+
+.question-content {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+.questionnaire-header {
+    position: fixed;
+    top: var(--space-4);
+    right: var(--space-4);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    background: var(--sticky-orange);
+    padding: var(--space-2) var(--space-3);
+    border-radius: 6px;
+    transform: rotate(2deg);
+    width: fit-content;
+}
+
+.progress-bar {
+    width: 100px;
+    height: 6px;
+    background: rgba(139, 111, 71, 0.2);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--warm-brown);
+    transition: width var(--transition-smooth);
+    border-radius: 3px;
+}
+
+.question-counter {
+    font-family: var(--font-handwritten);
+    font-size: 0.9rem;
+    color: var(--ink-blue);
+    font-weight: 600;
+}
+
+/* help-button styles removed */
+
+.question-instruction {
+    font-family: var(--font-handwritten);
+    font-style: italic;
+    color: var(--warm-brown);
+    margin-bottom: var(--space-6);
+    padding: var(--space-4);
+    background: var(--eraser-pink);
+    border-radius: 6px;
+    transform: rotate(-0.5deg);
+    border: 1px dashed var(--warm-brown);
+}
+
+.question-text {
+    font-family: var(--font-handwritten);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--ink-blue);
+    margin-bottom: var(--space-8);
+    line-height: 1.3;
+    transform: rotate(-0.3deg);
+    transition: padding-top .2s ease; /* плавное изменение отступа для ClipGuard */
+}
+
+.answer-container {
+    margin-bottom: var(--space-8);
+}
+
+/* Text Answer - handwritten style */
+.text-answer textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: var(--space-4);
+    border: none;
+    background: transparent;
+    font-family: var(--font-handwritten);
+    font-size: 1.2rem;
+    color: var(--ink-blue);
+    resize: vertical;
+    line-height: 2;
+    border-bottom: 2px solid rgba(139, 111, 71, 0.3);
+}
+
+.text-answer textarea:focus {
+    outline: none;
+    border-bottom-color: var(--warm-brown);
+}
+
+.text-answer textarea::placeholder {
+    color: var(--pencil-gray);
+    font-style: italic;
+}
+
+/* Choice Options as sticky notes */
+.choice-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.choice-option {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-5);
+    background: var(--paper-white);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition-paper);
+    position: relative;
+    box-shadow: 0 2px 4px var(--shadow-paper);
+    transform: rotate(-0.2deg);
+}
+
+.choice-option:nth-child(even) {
+    transform: rotate(0.2deg);
+    background: var(--paper-yellow);
+}
+
+.choice-option:hover {
+    transform: rotate(0deg) translateX(8px);
+    box-shadow: 0 4px 12px var(--shadow-deep);
+    border-color: var(--warm-brown);
+}
+
+.choice-option input[type="radio"],
+.choice-option input[type="checkbox"] {
+    transform: scale(1.3);
+    accent-color: var(--warm-brown);
+}
+
+.option-text {
+    flex: 1;
+    font-family: var(--font-handwritten);
+    font-size: 1.1rem;
+    color: var(--ink-blue);
+    font-weight: 500;
+}
+
+.other-input {
+    margin-top: var(--space-3);
+    margin-left: var(--space-6);
+}
+
+.other-input input {
+    width: 100%;
+    padding: var(--space-3);
+    border: none;
+    border-bottom: 2px dashed var(--warm-brown);
+    background: transparent;
+    font-family: var(--font-handwritten);
+    font-size: 1rem;
+    color: var(--ink-blue);
+}
+
+.other-input input:focus {
+    outline: none;
+    border-bottom-style: solid;
+}
+
+.question-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-3);
+    padding: var(--space-2) 0;
+}
+
+.next-button, .prev-button {
+    padding: var(--space-4) var(--space-8);
+    font-family: var(--font-handwritten);
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: 2px solid var(--warm-brown);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition-paper);
+    position: relative;
+    min-width: 120px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(139, 111, 71, 0.2);
+}
+
+.next-button {
+    background: var(--highlighter-yellow);
+    color: var(--ink-blue);
+    transform: rotate(-1deg);
+}
+
+.prev-button {
+    background: var(--paper-white);
+    color: var(--warm-brown);
+    transform: rotate(1deg);
+}
+
+.next-button:hover:not(:disabled) {
+    transform: rotate(0deg) translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-paper);
+}
+
+.prev-button:hover {
+    transform: rotate(0deg) translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-paper);
+}
+
+.next-button:disabled {
+    background: var(--pencil-gray);
+    color: rgba(255, 255, 255, 0.7);
+    cursor: not-allowed;
+    transform: rotate(-1deg);
+}
+
+/* Profile Section - секция профиля */
+/* Использует --paper-beige для фона профиля */
+.profile {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: var(--space-8) 0;
+    background: var(--paper-beige);
+    position: relative;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: var(--space-12);
+}
+
+.profile-header h2 {
+    font-family: var(--font-handwritten);
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--ink-blue);
+    margin-bottom: var(--space-4);
+    transform: rotate(-0.5deg);
+}
+
+.profile-header p {
+    font-size: 1.2rem;
+    color: var(--warm-brown);
+}
+
+.profile-form {
+    max-width: 400px;
+    margin: 0 auto;
+    background: var(--paper-white);
+    padding: var(--space-8);
+    border-radius: 8px;
+    box-shadow: 0 8px 25px var(--shadow-deep);
+    transform: rotate(-0.3deg);
+    border: 1px solid rgba(139, 111, 71, 0.1);
+}
+
+.form-group {
+    margin-bottom: var(--space-6);
+}
+
+.form-group label {
+    display: block;
+    font-family: var(--font-handwritten);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--ink-blue);
+    margin-bottom: var(--space-2);
+    transform: rotate(-0.2deg);
+}
+
+.form-group input {
+    width: 100%;
+    padding: var(--space-4);
+    border: none;
+    border-bottom: 2px solid rgba(139, 111, 71, 0.3);
+    background: transparent;
+    font-family: var(--font-handwritten);
+    font-size: 1.1rem;
+    color: var(--ink-blue);
+    transition: all var(--transition-paper);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-bottom-color: var(--warm-brown);
+    background: rgba(255, 248, 220, 0.3);
+}
+
+/* Telegram Login Section - используем те же правила центрирования что и в questionnaire */
+.telegram-login {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* ← Идентично .question-slide */
+    padding: var(--space-8);
+    background: linear-gradient(135deg, var(--amber-50-hex) 0%, var(--orange-50-hex) 50%, var(--red-50-hex) 100%);
+    background: linear-gradient(135deg, var(--amber-50) 0%, var(--orange-50) 50%, var(--red-50) 100%);
+    position: relative;
+    overflow: visible;        /* чтобы салют мог вылетать за блок */
+    isolation: isolate;       /* свой контекст наложения — предсказуемый z-index */
+}
+
+/* Плавный телеграм-голубой фон под клетками */
+.telegram-login::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1; /* под клеточным паттерном */
+    opacity: 0; /* по умолчанию прозрачный */
+    transition: opacity 2s ease;
+    /* телеграмная голубая вуаль с новыми цветами */
+    background:
+        radial-gradient(1200px 800px at 70% 10%, #00b7de, transparent 60%),
+        linear-gradient(180deg, #0088cc, #0078cc);
+}
+
+/* Клеточный оверлей для telegram-login - светлее поверх градиента */
+.telegram-login::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.40;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M15 30c0-8.284 6.716-15 15-15s15 6.716 15 15-6.716 15-15 15-15-6.716-15 15zM5 5h50v50H5z'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 60px 60px;
+    background-repeat: repeat;
+    filter: contrast(1.2) brightness(1.2);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* когда секция активна */
+.telegram-login.is-active::before {
+    opacity: 1;
+}
+
+/* контент секции поверх оверлея */
+.telegram-login .container,
+.telegram-login .login-content {
+    position: relative;
+    z-index: 1;
+}
+
+.login-content {
+    text-align: center;
+    max-width: var(--card-max); /* ← Используем ту же переменную что и в questionnaire */
+    width: min(100%, var(--card-max)); /* ← Идентично .question-card */
+    margin-inline: auto; /* ← Горизонтальное центрирование как у карточек */
+    background: var(--paper-white);
+    padding: var(--space-10);
+    border-radius: 12px;
+    box-shadow: 0 12px 30px var(--shadow-deep);
+    transform: rotate(-0.5deg);
+    border: 2px solid var(--warm-brown);
+    position: relative;
+    z-index: 1;               /* текст и контент всегда выше салюта */
+    overflow: hidden;          /* предотвращаем "выползание" содержимого */
+}
+
+/* Success Title Container */
+.success-title-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: var(--space-1);
+}
+
+/* Success Title */
+.success-title {
+    font-family: var(--font-handwritten);
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--ink-blue);
+    margin-bottom: var(--space-2);
+    transform: rotate(0.3deg);
+    position: relative;
+    z-index: 1;
+}
+
+/* Волнистая линия под заголовком в telegram-login */
+.telegram-login .success-title {
+    position: relative;
+    text-align: center;
+    margin-bottom: 1.5rem; /* увеличен отступ снизу для волны */
+    z-index: 1;             /* текст над волной */
+    overflow-wrap: anywhere; /* предотвращаем "выползание" длинных слов */
+    word-break: normal;
+}
+
+.telegram-login .success-title::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 20px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 20'%3E%3Cpath d='M5,15 Q50,5 100,12 T200,8 T290,15' stroke='%2376c9ea' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    opacity: 0.8;
+}
+
+/* Изумрудный салют - растягиваем и чуть вылезаем за края */
+#success-confetti {
+    position: absolute;
+    inset: -8% -8% -8% -8%;   /* можно увеличить/уменьшить «вылет» */
+    width: 116%;
+    height: 116%;
+    min-width: 200px;         /* минимальный размер для отладки */
+    min-height: 200px;        /* минимальный размер для отладки */
+    z-index: 0;
+    pointer-events: none;     /* не перехватывает клики */
+    opacity: 0.95;            /* мягче выглядит */
+}
+
+.login-content > p {
+    font-size: 1.1rem;
+    color: var(--pencil-gray);
+    margin-bottom: var(--space-6);
+    line-height: 1.6;
+}
+
+.telegram-widget-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-8);
+}
+
+/* Direct Telegram Login Button */
+.telegram-login-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    background: #0088cc;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    font-family: inherit;
+}
+
+.telegram-login-button:hover {
+    background: #006ba3;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 136, 204, 0.3);
+}
+
+.telegram-login-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 136, 204, 0.3);
+}
+
+.telegram-login-button svg {
+    flex-shrink: 0;
+    fill: white; /* Убеждаемся что SVG белый */
+}
+
+/* Анимация появления для иконки Telegram */
+.telegram-icon {
+    animation: telegramIconAppear 0.8s ease-out 0.3s both;
+    transform-origin: center;
+}
+
+@keyframes telegramIconAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) rotate(-180deg);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1) rotate(-90deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* Дополнительная анимация при наведении */
+.telegram-login-button:hover .telegram-icon {
+    animation: telegramIconHover 0.3s ease-out;
+}
+
+@keyframes telegramIconHover {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.1) rotate(5deg);
+    }
+    100% {
+        transform: scale(1.05) rotate(0deg);
+    }
+}
+
+/* Убеждаемся что весь текст кнопки белый */
+.telegram-login-button,
+.telegram-login-button *,
+.telegram-login-button span,
+.telegram-login-button div,
+.telegram-login-button a {
+    color: white !important;
+}
+
+/* Скрываем ошибки Telegram Widget */
+.telegram-widget-container iframe[src*="invalid"] {
+    display: none;
+}
+
+/* Скрываем текстовые ошибки от Telegram */
+.telegram-widget-container * {
+    color: inherit !important;
+}
+
+/* Убеждаемся что кнопка Telegram имеет белый текст */
+.telegram-widget-container .telegram-login-button,
+.telegram-widget-container .telegram-login-button * {
+    color: white !important;
+}
+
+/* Убираем сообщение "Настройка Telegram..." - теперь используем статический виджет */
+
+.login-explanation {
+    text-align: center; /* ← Изменено с left на center для центрирования */
+    background: var(--sticky-green);
+    padding: var(--space-6);
+    border-radius: 8px;
+    transform: rotate(0.5deg);
+    margin-top: var(--space-6);
+}
+
+.login-explanation p {
+    font-family: var(--font-handwritten);
+    font-weight: 600;
+    color: var(--ink-blue);
+    margin-bottom: var(--space-3);
+    font-size: 1.1rem;
+}
+
+.login-explanation ul {
+    list-style: none;
+    padding: 0;
+    text-align: left; /* ← Список остается лево-выровненным для читаемости */
+    max-width: 300px; /* ← Ограничиваем ширину для лучшего вида */
+    margin: 0 auto; /* ← Центрируем список внутри контейнера */
+}
+
+.login-explanation li {
+    padding: var(--space-2) 0;
+    color: var(--pencil-gray);
+    position: relative;
+    padding-left: var(--space-6);
+    font-size: 0.95rem;
+}
+
+.login-explanation li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--warm-brown);
+    font-weight: bold;
+}
+
+/* Success Section */
+.success {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: var(--space-8) 0;
+    background: linear-gradient(135deg, #85d2a4 0%, #a8e6cf 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+/* Клеточный оверлей для success в зеленоватой гамме */
+.success::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.30;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='%234caf50' fill-opacity='0.10'%3E%3Cpath d='M15 30c0-8.284 6.716-15 15-15s15 6.716 15 15-6.716 15-15 15-15-6.716-15 15zM5 5h50v50H5z'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 60px 60px;
+    background-repeat: repeat;
+    filter: contrast(1.2) brightness(0.9);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.success-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--paper-white);
+    padding: var(--space-10);
+    border-radius: 12px;
+    box-shadow: 0 15px 35px var(--shadow-deep);
+    transform: rotate(-0.3deg);
+    border: 3px solid var(--warm-brown);
+    position: relative;
+    z-index: 2; /* поверх конфетти (z-index:1) */
+}
+
+
+.success h2 {
+    font-family: var(--font-handwritten);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--ink-blue);
+    margin-bottom: var(--space-6);
+    transform: rotate(0.5deg);
+    position: relative;
+}
+
+/* Волнистая линия под заголовком "Готово!" */
+.success h2::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 20px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 20'%3E%3Cpath d='M5,15 Q50,5 100,12 T200,8 T290,15' stroke='%23fdcb6e' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    opacity: 0.8;
+}
+
+.success-message {
+    font-size: 1.3rem;
+    color: var(--pencil-gray);
+    margin-bottom: var(--space-10);
+    line-height: 1.5;
+}
+
+.next-steps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 12px;
+    margin-bottom: var(--space-10);
+}
+
+.next-steps h3 {
+    font-family: var(--font-handwritten);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--ink-blue);
+    margin-bottom: var(--space-6);
+    text-align: center;
+    transform: rotate(-0.3deg);
+}
+
+.next-steps .step {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+    padding: var(--space-4);
+    background: var(--paper-yellow);
+    border-radius: 6px;
+    transform: rotate(0.2deg);
+    border: 1px dashed var(--warm-brown);
+}
+
+/* Стили для карточек шагов */
+.next-steps .step.step-1 {
+    background: var(--sticky-blue);
+    transform: rotate(0.2deg);
+}
+
+.next-steps .step.step-2 {
+    background: var(--sticky-green);
+    transform: rotate(-0.2deg);
+    position: relative;
+    overflow: hidden;
+}
+
+.next-steps .step.step-2::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.30;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='%234caf50' fill-opacity='0.10'%3E%3Cpath d='M15 30c0-8.284 6.716-15 15-15s15 6.716 15 15-6.716 15-15 15-15-6.716-15 15zM5 5h50v50H5z'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 60px 60px;
+    background-repeat: repeat;
+    filter: contrast(1.2) brightness(0.9);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.next-steps .step.step-2 .step-number,
+.next-steps .step.step-2 p {
+    position: relative;
+    z-index: 1;
+}
+
+.next-steps .step.step-3 {
+    background: var(--paper-yellow);
+    transform: rotate(0.2deg);
+}
+
+.step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--warm-brown);
+    color: var(--paper-white);
+    border-radius: 50%;
+    font-family: var(--font-handwritten);
+    font-weight: 700;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin: 0 auto var(--space-3) auto; /* Центрируем и добавляем отступ снизу */
+}
+
+/* Белые цифры для всех шагов */
+.next-steps .step .step-number {
+    color: var(--paper-white);
+}
+
+.next-steps .step p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--ink-blue);
+    margin: 0;
+}
+
+
+/* ===== INTRO OVERLAY STYLES ===== */
+.intro-overlay {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+/* Клеточный фон для intro-overlay - унифицированный подход как в Telegram секции */
+.intro-overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, var(--amber-50-hex) 0%, var(--orange-50-hex) 50%, var(--red-50-hex) 100%);
+    background: linear-gradient(135deg, var(--amber-50) 0%, var(--orange-50) 50%, var(--red-50) 100%);
+    overflow: hidden;
+    z-index: 2000;
+}
+
+/* Клеточный паттерн для intro-overlay */
+.intro-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.30;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='%23d4a574' fill-opacity='0.05'%3E%3Cpath d='M15 30c0-8.284 6.716-15 15-15s15 6.716 15 15-6.716 15-15 15-15-6.716-15 15zM5 5h50v50H5z'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 60px 60px;
+    background-repeat: repeat;
+    filter: contrast(1.2) brightness(0.9);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Клеточный фон wrapper для intro - теперь только контейнер */
+.intro-background-wrapper {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+/* Удален дублирующий псевдоэлемент - фон теперь на .intro-overlay */
+
+/* Контент поверх клеточного фона */
+.intro-content-wrapper {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+/* Клеточный фон внутри intro-overlay */
+.intro-overlay .min-h-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+/* Убираем только фоны questionnaire когда показываются greeting/intro страницы */
+.intro-overlay ~ #questionnaire,
+body:has(.intro-overlay) #questionnaire {
+    background: none !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+body:has(.intro-overlay) .questionnaire-scroll-container {
+    background: none !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+/* Greeting message styles - объединенные правила */
+.intro-message {
+    text-align: center;
+    margin-bottom: var(--space-8);
+    background: var(--paper-white);
+    padding: var(--space-6);
+    border-radius: 12px;
+    box-shadow: 
+        0 8px 25px var(--shadow-deep),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    border: 2px solid var(--warm-brown);
+    transform: rotate(-0.5deg);
+    position: relative;
+}
+
+.intro-message .question-text {
+    font-family: var(--font-handwritten);
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--ink-blue);
+    line-height: 1.3;
+    margin: 0;
+}
+
+.intro-card {
+    width: 100%;
+    max-width: min(500px, calc(100vw - 32px));
+    box-sizing: border-box;
+    background: var(--paper-white);
+    border-radius: 12px;
+    padding: var(--space-8);
+    max-width: 500px;
+    margin: var(--space-4);
+    text-align: center;
+    box-shadow: 0 20px 40px var(--shadow-deep);
+    transform: rotate(-0.5deg);
+    position: relative;
+}
+
+/* Greeting card - прозрачная карточка только для первой страницы */
+.intro-card.greeting-card {
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Paper clip removed for intro-card - no external note needed */
+
+.intro-card p {
+    font-family: var(--font-handwritten);
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: var(--ink-blue);
+    margin-bottom: var(--space-6);
+}
+
+/* Первый параграф (заголовок) - более выделяющийся */
+.intro-card p:first-child {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--warm-brown);
+    text-shadow: 1px 1px 2px rgba(139, 111, 71, 0.2);
+    margin-bottom: var(--space-8);
+}
+
+.intro-hint {
+    background: var(--eraser-pink);
+    border-radius: 6px;
+    padding: var(--space-4);
+    border: 1px dashed var(--warm-brown);
+    transform: rotate(0.3deg);
+    margin: var(--space-4) 0;
+}
+
+/* Questionnaire Notifications - элегантные уведомления в углу */
+.questionnaire-notification {
+    position: fixed;
+    top: var(--space-4);
+    left: var(--space-4);
+    max-width: 320px;
+    z-index: 2000;
+    opacity: 0;
+    transform: translateX(-100%) rotate(-1deg);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.questionnaire-notification.show {
+    opacity: 1;
+    transform: translateX(0) rotate(-1deg);
+}
+
+.questionnaire-notification.hide {
+    opacity: 0;
+    transform: translateX(-100%) rotate(-1deg);
+}
+
+.notification-content {
+    background: var(--paper-white);
+    border: 2px solid var(--warm-brown);
+    border-radius: 8px;
+    padding: var(--space-4);
+    box-shadow: 0 4px 12px var(--shadow-paper);
+    position: relative;
+}
+
+.notification-text {
+    font-family: var(--font-handwritten);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: var(--ink-blue);
+    margin-right: var(--space-6);
+}
+
+.notification-close {
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-2);
+    background: var(--eraser-pink);
+    border: 1px solid var(--warm-brown);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    cursor: pointer;
+    color: var(--ink-blue);
+    transition: all 0.2s ease;
+}
+
+.notification-close:hover {
+    background: var(--highlighter-yellow);
+    transform: scale(1.1);
+}
+
+/* Специальные стили для подсказки первого вопроса удалены - используем стандартные белые уведомления */
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .questionnaire-notification {
+        top: 60px; /* Выше, чтобы не перекрывать подсказку */
+        left: 95px; /* Справа от красной линии (90px + 5px отступ) */
+        right: var(--space-2); /* Чуть шире */
+        max-width: none;
+        transform: translateY(-100%) rotate(-1deg);
+    }
+    
+    .questionnaire-notification.show {
+        transform: translateY(0) rotate(-1deg);
+    }
+    
+    .questionnaire-notification.hide {
+        transform: translateY(-100%) rotate(-1deg);
+    }
+    
+    .notification-content {
+        padding: var(--space-2);
+        border-radius: 6px;
+    }
+    
+    .notification-text {
+        font-size: 0.9rem;
+        margin-right: var(--space-4);
+        line-height: 1.3;
+    }
+    
+    .notification-close {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .questionnaire-notification {
+        top: 50px; /* Выше для маленьких экранов, чтобы не перекрывать подсказку */
+        left: 92px; /* Справа от красной линии (90px + 2px отступ) */
+        right: var(--space-1); /* Чуть шире */
+    }
+    
+    .notification-content {
+        padding: var(--space-1);
+    }
+    
+    .notification-text {
+        font-size: 0.85rem;
+        line-height: 1.2;
+    }
+}
+
+/* Tooltip */
+.tooltip-popover {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(1deg);
+    background: var(--paper-white);
+    border-radius: 8px;
+    padding: var(--space-6);
+    max-width: 350px;
+    box-shadow: 0 12px 25px var(--shadow-deep);
+    border: 2px solid var(--warm-brown);
+    z-index: 2001;
+}
+
+.tooltip-popover .close {
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-2);
+    background: var(--eraser-pink);
+    border: 1px solid var(--warm-brown);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    color: var(--ink-blue);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) rotate(-2deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(-2deg) scale(0.9);
+    }
+}
+@keyframes dotted-line-move-down {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 102px;
+    }
+}
+
+@keyframes dotted-line-move-down-tablet {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 68px;
+    }
+}
+
+@keyframes dotted-line-move-down-mobile {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 52px;
+    }
+}
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
+@media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100vw;
+    }
+    
+    #app {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    
+    .hero {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+        padding: 40px 0;
+    }
+    
+    .container {
+        width: 100%;
+        max-width: 100vw;
+        padding: 0 12px;
+        margin: 0;
+    }
+    
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Адаптивность для клеточного фона */
+    .bg-template-cellular::before,
+    .questionnaire::before {
+        background-size: 40px 40px !important;
+        opacity: 0.45 !important; /* Увеличиваем видимость на планшетах */
+    }
+    
+    .hero-content {
+        margin-left: 20px;
+    }
+    
+    .hero::before {
+        left: 15px;
+        width: 2px;
+    }
+    
+    .hero::after {
+        left: 8px;
+        width: 15px;
+    }
+    
+    /* Mobile adjustments for scroll animation */
+    .question-slide {
+        padding: var(--space-6);
+        padding-top: calc(var(--space-6) + 50px); /* Добавляем отступ сверху для шкалы вопросов на мобильных */
+    }
+    
+    .questionnaire-scroll-container::before {
+        left: 30px;
+        width: 2px;
+        background-size: 100% 32px, 100% 100%;
+        background: repeating-linear-gradient(
+            to bottom,
+            transparent 0px,  /* ← Изменено с var(--warm-brown) на transparent */
+            transparent 16px,
+            transparent 16px,
+            transparent 32px
+        );
+    }
+    
+    .questionnaire-scroll-container::after {
+        left: 24px;
+        width: 12px;
+    }
+    
+    .question-slide::after {
+        left: 50px;
+    }
+    
+    .intro-content {
+        max-width: 100%;
+        padding: 0 var(--space-2);
+    }
+    
+    .intro-steps p {
+        font-size: 1rem;
+    }
+    
+    .intro-hint {
+        padding: var(--space-3);
+        margin: var(--space-3) 0;
+    }
+    
+    .intro-hint p {
+        font-size: 0.9rem;
+    }
+    
+    .intro-input {
+        font-size: 1.1rem;
+        padding: var(--space-3);
+    }
+    
+    .logo h1 {
+        font-size: 48px;
+    }
+    
+    .tagline {
+        font-size: 1.2rem;
+    }
+    
+    .value-proposition {
+        padding: var(--space-6);
+        margin-bottom: var(--space-12);
+    }
+    
+    .value-proposition h2 {
+        font-size: 22px;
+        line-height: 1.3;
+        margin-bottom: 16px;
+        padding: 0 8px;
+    }
+    
+    .value-proposition .description {
+        font-size: 16px;
+        line-height: 1.5;
+        padding: 0 8px;
+        margin-bottom: 24px;
+    }
+    
+    .process-steps {
+        width: 100%;
+        max-width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 0 8px;
+    }
+    
+    .step {
+        width: 100%;
+        max-width: 100%;
+        inline-size: clamp(260px, 80vw, 320px);
+        min-height: auto;
+        height: auto !important;
+        padding: 16px 18px 18px;
+        flex-direction: row;
+        text-align: left;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .step-icon {
+        font-size: 2rem;
+        margin-bottom: var(--space-3);
+    }
+    
+    .step-text h3 {
+        font-size: 1.2rem;
+    }
+    
+    .step-text p {
+        font-size: 0.9rem;
+    }
+    
+    .cta-button {
+        font-size: 20px;
+        padding: 18px 36px;
+        margin: 24px 8px 0;
+        width: calc(100% - 16px);
+        max-width: 320px;
+        min-height: 56px;
+        border-radius: 16px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        transition: all 0.2s ease;
+    }
+    
+    .cta-button:active {
+        transform: scale(0.98);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* ===== MOBILE QUESTIONNAIRE OPTIMIZATIONS ===== */
+    #questionnaire {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    
+    .questionnaire-header {
+        /* Remove width: 100% and left: 0 to keep it compact */
+        padding: var(--space-1) var(--space-2);
+        gap: var(--space-2);
+    }
+    
+    .questionnaire-scroll-container {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+        padding: 0;
+    }
+    
+    .question-slide {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+        padding: 0 12px;
+    }
+    
+    .questionnaire-content,
+    .question-section {
+        padding: var(--space-6) var(--space-4);
+        padding-top: calc(var(--space-6) + 50px); /* Добавляем отступ сверху для шкалы вопросов на мобильных */
+    }
+    
+    .question-container {
+        padding: var(--space-6) var(--space-4);
+        padding-top: calc(var(--space-6) + 50px); /* Добавляем отступ сверху для шкалы вопросов на мобильных */
+    }
+    
+    .question-content {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 16px;
+        margin: 80px 0 20px;
+        margin-top: calc(80px + 50px); /* Добавляем дополнительный отступ сверху для шкалы вопросов */
+        box-sizing: border-box;
+    }
+    
+    .question-text {
+        font-size: 1.5rem;
+        margin-bottom: var(--space-6);
+    }
+    
+    .question-instruction {
+        font-size: 0.95rem;
+        padding: var(--space-3);
+        margin-bottom: var(--space-2); /* изменено с space-5 на space-2 */
+        text-align: left; /* центрирование по левой стороне */
+    }
+    
+    .choice-option {
+        width: 100%;
+        max-width: 100%;
+        padding: 18px 16px;
+        font-size: 18px;
+        min-height: 56px;
+        box-sizing: border-box;
+        gap: var(--space-3);
+    }
+    
+    .option-text {
+        font-size: 1rem;
+    }
+    
+    .text-answer textarea {
+        width: 100%;
+        max-width: 100%;
+        font-size: 18px;
+        padding: 18px;
+        min-height: 120px;
+        box-sizing: border-box;
+        resize: vertical;
+    }
+    
+    .choice-option input[type="radio"],
+    .choice-option input[type="checkbox"] {
+        transform: scale(1.5);
+    }
+    
+    .other-input input {
+        width: 100%;
+        max-width: 100%;
+        font-size: 18px;
+        padding: 16px;
+        box-sizing: border-box;
+    }
+    
+    .question-navigation {
+        width: 100%;
+        max-width: 100%;
+        gap: 12px;
+        padding: 0;
+        margin-top: var(--space-3);
+        margin-bottom: var(--space-4);
+        padding: var(--space-2) 0;
+    }
+    
+    .next-button, .prev-button {
+        font-size: 18px;
+        padding: 18px 28px;
+        min-height: 56px;
+        border-radius: 12px;
+        min-width: 120px;
+    }
+    
+    .next-button:active, .prev-button:active {
+        transform: scale(0.98);
+    }
+    
+    .questionnaire-content {
+        padding: var(--space-6) var(--space-4) var(--space-8) var(--space-4);
+    }
+    
+    .questionnaire-header {
+        /* Keep compact positioning - don't override top/right */
+        padding: var(--space-2) var(--space-3);
+    }
+    
+    .progress-bar {
+        width: 80px;
+    }
+    
+    .question-counter {
+        font-size: 0.8rem;
+    }
+    
+    /* help-button mobile styles removed */
+    
+    .profile-form {
+        padding: var(--space-6);
+        margin: 0 var(--space-3);
+    }
+    
+    .profile-header h2 {
+        font-size: 2rem;
+    }
+    
+    .profile-header p {
+        font-size: 1.1rem;
+    }
+    
+    .login-content {
+        padding: var(--space-8);
+        /* margin убран - используем margin-inline: auto из основного правила */
+    }
+    
+    .success-title {
+        font-size: 1.8rem;
+    }
+    
+    .success-content {
+        padding: var(--space-8);
+        margin: 0 var(--space-3);
+    }
+    
+    .success h2 {
+        font-size: 2.2rem;
+    }
+    
+    .success-message {
+        font-size: 1.1rem;
+    }
+    
+    /* ===== MOBILE INTRO OPTIMIZATIONS ===== */
+    .intro-overlay {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    
+    .intro-content-wrapper {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+        padding: 0 12px;
+    }
+    
+    .intro-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 16px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    
+    .intro-message h2 {
+        font-size: 1.8rem;
+    }
+    
+    .intro-card p {
+        font-size: 1.1rem;
+    }
+    
+    .intro-card p:first-child {
+        font-size: 1.3rem;
+    }
+    
+    .intro-input {
+        width: 100%;
+        max-width: 100%;
+        font-size: 18px;
+        padding: 18px;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Адаптивность для клеточного фона на маленьких экранах */
+    .bg-template-cellular::before,
+    .questionnaire::before {
+        background-size: 30px 30px !important;
+        opacity: 0.50 !important; /* Увеличиваем видимость на мобильных */
+    }
+    
+    /* Mobile scroll animation adjustments */
+    .question-slide {
+        padding: var(--space-5);
+        padding-top: calc(var(--space-5) + 40px); /* Добавляем отступ сверху для шкалы вопросов на маленьких экранах */
+    }
+    
+    .questionnaire-scroll-container::before {
+        left: 20px;
+        width: 1px;
+        background: repeating-linear-gradient(
+            to bottom,
+            transparent 0px,  /* ← Изменено с var(--warm-brown) на transparent */
+            transparent 12px,
+            transparent 12px,
+            transparent 24px
+        );
+    }
+    
+    .questionnaire-scroll-container::after {
+        left: 16px;
+        width: 8px;
+    }
+    
+    .question-slide::after {
+        left: 30px;
+    }
+    
+    .intro-content {
+        padding: 0 var(--space-1);
+    }
+    
+    .intro-steps p {
+        font-size: 0.95rem;
+    }
+    
+    .intro-hint {
+        padding: var(--space-2) var(--space-3);
+    }
+    
+    .intro-hint p {
+        font-size: 0.85rem;
+    }
+    
+    .intro-input {
+        font-size: 1rem;
+        padding: var(--space-2);
+    }
+    
+    .question-card {
+        margin: var(--space-1);
+        padding: var(--space-4);
+        border-radius: 8px;
+    }
+    
+    .question-card::before {
+        top: -6px;
+        right: 15px;
+        width: 16px;
+        height: 32px;
+        border-radius: 8px 8px 2px 2px;
+    }
+    
+    .question-card-container {
+        padding: var(--space-1);
+        padding-top: calc(var(--space-1) + 40px); /* Добавляем отступ сверху для шкалы вопросов на маленьких экранах */
+    }
+    
+    .hero-content {
+        margin-left: 10px;
+    }
+    
+    .hero::before,
+    .hero::after {
+        left: 5px;
+        width: 1px;
+    }
+    
+    .logo h1 {
+        font-size: 2.5rem;
+        margin-bottom: var(--space-2);
+    }
+    
+    .tagline {
+        font-size: 1rem;
+        margin-left: 10px;
+    }
+    
+    .value-proposition {
+        padding: var(--space-5);
+        margin-bottom: var(--space-10);
+    }
+    
+    .value-proposition h2 {
+        font-size: 1.6rem;
+        line-height: 1.2;
+    }
+    
+    .description {
+        font-size: 0.95rem;
+    }
+    
+    .questionnaire-content,
+    .question-section {
+        padding: var(--space-5) var(--space-3) var(--space-8) var(--space-3);
+        padding-top: calc(var(--space-5) + 40px); /* Добавляем отступ сверху для шкалы вопросов на маленьких экранах */
+    }
+    
+    .question-container {
+        padding: var(--space-5) var(--space-3) var(--space-8) var(--space-3);
+        padding-top: calc(var(--space-5) + 40px); /* Добавляем отступ сверху для шкалы вопросов на маленьких экранах */
+    }
+    
+    .question-navigation {
+        margin-bottom: var(--space-3);
+    }
+    
+    .question-text {
+        font-size: 1.4rem;
+        margin-bottom: var(--space-5);
+    }
+    
+    .question-instruction {
+        font-size: 0.9rem;
+        padding: var(--space-2) var(--space-3);
+        margin-bottom: var(--space-2); /* изменено с space-4 на space-2 */
+        text-align: left; /* центрирование по левой стороне */
+    }
+    
+    .step {
+        inline-size: clamp(240px, 90vw, 280px);
+        min-height: auto;
+        height: auto !important;
+        padding: 14px 16px 16px;
+    }
+    
+    .step-icon {
+        font-size: 1.8rem;
+        margin-bottom: var(--space-2);
+    }
+    
+    .step-text h3 {
+        font-size: 1.1rem;
+    }
+    
+    .step-text p {
+        font-size: 0.85rem;
+    }
+    
+    .choice-option {
+        padding: var(--space-2) var(--space-3);
+        gap: var(--space-2);
+    }
+    
+    .option-text {
+        font-size: 0.95rem;
+    }
+    
+    .text-answer textarea {
+        font-size: 1rem;
+        min-height: 80px;
+        padding: var(--space-2);
+    }
+    
+    .next-button, .prev-button {
+        padding: var(--space-3) var(--space-6);
+        font-size: 1.1rem;
+        min-width: 100px;
+    }
+    
+    .question-navigation {
+        margin-top: var(--space-3);
+        margin-bottom: var(--space-4);
+        padding: var(--space-2) 0;
+    }
+    
+    .questionnaire-content {
+        padding: var(--space-6) var(--space-4) var(--space-8) var(--space-4);
+    }
+    
+    .questionnaire-header {
+        top: var(--space-2);
+        right: var(--space-2);
+        gap: var(--space-2);
+        padding: var(--space-1) var(--space-2);
+    }
+    
+    .progress-bar {
+        width: 60px;
+        height: 4px;
+    }
+    
+    .question-counter {
+        font-size: 0.75rem;
+    }
+    
+    /* help-button small mobile styles removed */
+    
+    .cta-button {
+        font-size: 1.1rem;
+        padding: var(--space-3) var(--space-5);
+    }
+    
+    .profile-form {
+        padding: var(--space-5);
+    }
+    
+    .form-group input {
+        padding: var(--space-3);
+        font-size: 1rem;
+    }
+    
+    .login-content {
+        padding: var(--space-6);
+        /* margin убран - используем margin-inline: auto из основного правила */
+    }
+    
+    /* Больше места над волной на очень узких экранах */
+    .telegram-login .success-title {
+        margin-bottom: 1.8rem;
+    }
+    
+    .success-title {
+        font-size: 1.6rem;
+    }
+    
+    .login-content > p {
+        font-size: 1rem;
+    }
+    
+    .success-content {
+        padding: var(--space-6);
+    }
+    
+    .success h2 {
+        font-size: 2rem;
+    }
+    
+    .success-message {
+        font-size: 1rem;
+    }
+    
+    .next-steps .step {
+        padding: var(--space-3);
+        margin-bottom: var(--space-4);
+    }
+    
+    .step-number {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+        margin: 0 auto var(--space-2) auto; /* Центрируем и добавляем отступ снизу */
+    }
+    
+    .next-steps .step p {
+        font-size: 0.9rem;
+    }
+    
+    .intro-card {
+        margin: var(--space-2);
+        padding: var(--space-5);
+    }
+    
+    .intro-card p {
+        font-size: 1rem;
+    }
+    
+    .intro-card p:first-child {
+        font-size: 1.2rem;
+    }
+}
+
+/* Скрыть debug элементы в продакшене */
+#stage-indicator,
+.dev-hud,
+.test-hint,
+[data-test],
+.qa-only,
+.debug,
+#testAuthButton {
+    display: none !important;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .question-slide {
+        transition: none !important;
+    }
+    
+    .questionnaire-scroll-container {
+        transition: none !important;
+    }
+}
+/* ===== ANIMATED BACKGROUND CANVAS ===== */
+/* Канвас — над фоном секции, но под контентом */
+#animated-bg-canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;           /* не мешаем кликам по карточке */
+}
+
+/* Скрываем animated canvas на стадии intro - чтобы не перекрывал клеточный фон */
+body.stage-intro #animated-bg-canvas,
+body.is-intro #animated-bg-canvas {
+    display: none !important;
+    pointer-events: none;
+    will-change: transform;
+}
+.question {
+    background-color: #e3f2fd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+/* Отключаем "умное" центрирование - используем только CSS центрирование */
+.question-card[data-smart-center] {
+  transform: none !important; /* ← Отключаем JavaScript трансформы */
+  will-change: auto;
+  transition: none;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--card-max);
+  width: min(100%, var(--card-max));
+}

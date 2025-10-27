@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire Portfolio</title>
+    <meta name="description" content="Живые встречи с людьми на твоей волне. Анкета, подбор через AI, приглашение на встречу.">
+    <link rel="canonical" href="/">
+    <!-- Локальные шрифты для гарантированного отображения -->
+    <link rel="stylesheet" href="/src/assets/fonts/fonts.css">
+    <link rel="stylesheet" href="/src/style.css">
+    <!-- Template source стили для клеточного фона -->
+    <link rel="stylesheet" href="/src/styles-net/template-index.css">
+    <link rel="stylesheet" href="/src/styles-net/template-globals.css">
+    <!-- Preloader styles -->
+    <style>
+        /* Preloader overlay */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #ffffff;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            opacity: 1;
+            transition: background-color 700ms ease, opacity 1000ms ease;
+            --radius: 75px; /* радиус круга */
+            --face-offset: 0deg; /* ориентация к центру (если понадобится) */
+            --angle-offset: 18deg; /* глобальный сдвиг по кругу */
+        }
+
+        #preloader .ring {
+            position: relative;
+            width: calc(var(--radius) * 2);
+            height: calc(var(--radius) * 2);
+        }
+
+        #preloader .node {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 56px;
+            height: 56px;
+            margin: -28px 0 0 -28px; /* выравниваем центр узла по центру круга */
+            transform-origin: 0 0;
+        }
+
+        /* Внутренняя обертка, чтобы «повернуть лицом» к центру */
+        #preloader .sprite {
+            width: 56px;
+            height: 56px;
+            transform: rotate(var(--face-offset));
+            transform-origin: center center;
+        }
+
+        /* Расставляем узлы равномерно по кругу: 5 элементов → каждые 72deg */
+        /* Порядок с вершины по часовой: c1(верх), c2(право‑верх), c3(право‑низ), c4(лево‑низ), c5(лево‑верх) */
+        #preloader .node.c1 { transform: rotate(calc(198deg + var(--angle-offset))) translate(0, calc(-1 * var(--radius))) rotate(calc(-198deg - var(--angle-offset))); }
+        #preloader .node.c2 { transform: rotate(calc(-90deg + var(--angle-offset))) translate(0, calc(-1 * var(--radius))) rotate(calc( 90deg - var(--angle-offset))); }
+        #preloader .node.c3 { transform: rotate(calc( -18deg + var(--angle-offset))) translate(0, calc(-1 * var(--radius))) rotate(calc( 18deg - var(--angle-offset))); }
+        #preloader .node.c4 { transform: rotate(calc(  54deg + var(--angle-offset))) translate(0, calc(-1 * var(--radius))) rotate(calc(-54deg - var(--angle-offset))); }
+        #preloader .node.c5 { transform: rotate(calc( 126deg + var(--angle-offset))) translate(0, calc(-1 * var(--radius))) rotate(calc(-126deg - var(--angle-offset))); }
+
+        /* Все SVG уже повернуты корректно → единый 0deg */
+        #preloader .node .sprite { transform: rotate(0deg); }
+
+        /* Акцент на увеличении: главный стул с большей амплитудой */
+        #preloader .node.c1 .chair { animation-name: pulse-strong; }
+
+        @keyframes pulse-strong {
+            0%   { transform: scale(1); animation-timing-function: cubic-bezier(.35,.85,.2,1); }
+            35%  { transform: scale(1.45); animation-timing-function: cubic-bezier(.4,0,.2,1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Быстрая ручная коррекция: глобально проверни на несколько градусов при необходимости */
+        /* пример: #preloader { --angle-offset: -10deg; } */
+
+        #preloader .chair {
+            width: 56px;
+            height: 56px;
+            will-change: transform;
+            transform-origin: center center;
+            animation: pulse 1s linear infinite;
+            animation-play-state: paused;
+            display: block;
+        }
+
+        @keyframes pulse {
+            0%   { transform: scale(1); animation-timing-function: cubic-bezier(.35,.85,.2,1); }
+            35%  { transform: scale(1.3); animation-timing-function: cubic-bezier(.4,0,.2,1); }
+            100% { transform: scale(1); }
+        }
+
+        /* JS‑driven chaining; delays handled in script */
+
+        /* В тёмной теме фон прелоадера всегда белый, не зависит от темы */
+        .dark-theme #preloader { background: #ffffff; }
+
+        /* White wipe state forces solid white and hides content before global fade */
+        #preloader.wipe { background: #ffffff !important; }
+        .dark-theme #preloader.wipe { background: #ffffff !important; }
+        #preloader.wipe .ring, #preloader.wipe .hint { opacity: 0; transition: opacity 700ms ease; }
+
+        /* Slow-load hint */
+        #preloader .hint {
+            position: absolute;
+            left: 0; right: 0; bottom: 32px;
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+            padding: 0 16px;
+            display: none;
+        }
+
+        #preloader .hint.visible { display: block; }
+    </style>
+</head>
+    <body class="stage-start bg-template-cellular">
+    <!-- Preloader overlay -->
+    <div id="preloader" aria-hidden="true">
+        <div class="ring">
+            <div class="node c1"><div class="sprite"><img src="/assets/chairs/chair1.svg" class="chair" alt="Стул 1"></div></div>
+            <div class="node c2"><div class="sprite"><img src="/assets/chairs/chair2.svg" class="chair" alt="Стул 2"></div></div>
+            <div class="node c3"><div class="sprite"><img src="/assets/chairs/chair3.svg" class="chair" alt="Стул 3"></div></div>
+            <div class="node c4"><div class="sprite"><img src="/assets/chairs/chair4.svg" class="chair" alt="Стул 4"></div></div>
+            <div class="node c5"><div class="sprite"><img src="/assets/chairs/chair5.svg" class="chair" alt="Стул 5"></div></div>
+        </div>
+        <div id="preloaderHint" class="hint">Загрузка задерживается… Проверьте интернет</div>
+    </div>
+
+    <!-- Контент страницы -->
+    <div id="app">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="logo">
+                        <h1>5chairs</h1>
+                        <p class="tagline">Знакомства за одним столом</p>
+                    </div>
+                    
+                    <div class="value-proposition">
+                        <h2>Мы не рассчитываем на случайные встречи.<br>Мы создаём условия, чтобы они случались.</h2>
+                        <p class="description">
+                            В чужом городе, в новой главе жизни — иногда просто не хватает «своих».<br>
+                            Поэтому мы собираем людей за одним столом: без масок, без пафоса, без нужды что-то доказывать.
+                        </p>
+                    </div>
+
+                    <div class="process-steps">
+                        <div class="step">
+                            <div class="step-icon">✍️</div>
+                            <div class="step-text">
+                                <h3>Короткая анкета</h3>
+                                <p>12 вопросов о тебе</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon">🧠</div>
+                            <div class="step-text">
+                                <h3>Подбор через AI</h3>
+                                <p>Находим людей на твоей волне</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon">🪑</div>
+                            <div class="step-text">
+                                <h3>Живая встреча</h3>
+                                <p>Приглашение на встречу</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="/questionnaire" class="cta-button">
+                        🚀 Начать знакомство
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        // Preloader logic for index page - hide immediately after page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const preloader = document.getElementById('preloader');
+            const preloaderHint = document.getElementById('preloaderHint');
+            const chainNodes = Array.from(document.querySelectorAll('#preloader .node .chair'));
+            let chainIdx = 0;
+
+            // Start the chain animation
+            function startChainLoop() {
+                chainIdx = 0;
+                triggerNext();
+            }
+
+            function triggerNext() {
+                if (chainIdx >= chainNodes.length) {
+                    // Chain complete, hide preloader
+                    hidePreloader();
+                    return;
+                }
+
+                const node = chainNodes[chainIdx];
+                node.style.animationPlayState = 'running';
+
+                const delay = chainIdx === 0 ? 0 : 200; // First chair immediate, others delayed
+                setTimeout(() => {
+                    chainIdx++;
+                    triggerNext();
+                }, delay);
+            }
+
+            // Hide preloader with fade-out
+            function hidePreloader() {
+                try {
+                    if (!preloader || preloader.style.display === 'none') return;
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }, 1000); // Match transition duration
+                } catch (error) {
+                    console.error('Error hiding preloader:', error);
+                }
+            }
+
+            // Start animation and hide after a short delay for index page
+            startChainLoop();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отладка фонов</title>
+    <link rel="stylesheet" href="src/style.css">
+    <style>
+        .debug-panel {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 9999;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .debug-panel button {
+            margin: 5px;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            background: #f0f0f0;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .debug-panel button:hover {
+            background: #e0e0e0;
+        }
+        .debug-info {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 4px;
+        }
+        .center-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .test-card {
+            background: rgba(255,255,255,0.8);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="stage-start" data-bg="paper">
+    <div class="debug-panel">
+        <h3>🔧 Отладка фонов</h3>
+        
+        <div>
+            <strong>Тесты этапов:</strong><br>
+            <button onclick="setStageAndBg('start', 'paper')">Start (бумага)</button>
+            <button onclick="setStageAndBg('intro', 'warm-grid')">Intro (клетка)</button>
+            <button onclick="setStageAndBg('questionnaire', 'paper')">Questionnaire (бумага)</button>
+        </div>
+        
+        <div style="margin-top: 10px;">
+            <strong>Тесты фонов:</strong><br>
+            <button onclick="setBgOnly('paper')">Только бумага</button>
+            <button onclick="setBgOnly('warm-grid')">Только клетка</button>
+        </div>
+        
+        <div class="debug-info">
+            <div><strong>Body classes:</strong> <span id="body-classes"></span></div>
+            <div><strong>Data-bg:</strong> <span id="data-bg"></span></div>
+            <div><strong>Computed BG:</strong> <span id="computed-bg" style="font-size: 10px;"></span></div>
+        </div>
+    </div>
+
+    <div class="center-content">
+        <div class="test-card">
+            <h1>Тест фонов Stage Intro</h1>
+            <p>Этот экран помогает отладить проблему с фоном</p>
+            <p><strong>Ожидаем:</strong> В режиме "Intro (клетка)" должен быть клеточный фон</p>
+            <p><strong>Проблема:</strong> Возможно, показывается тетрадный фон вместо клеточного</p>
+        </div>
+    </div>
+
+    <script>
+        function setStageAndBg(stage, bg) {
+            console.log(`🔄 Переключение на stage: ${stage}, bg: ${bg}`);
+            
+            // Удаляем все stage классы
+            ['stage-start', 'stage-intro', 'stage-questionnaire'].forEach(cls => {
+                document.body.classList.remove(cls);
+            });
+            
+            // Добавляем новый stage класс
+            document.body.classList.add(`stage-${stage}`);
+            
+            // Устанавливаем data-bg
+            document.body.setAttribute('data-bg', bg);
+            
+            updateDebugInfo();
+        }
+        
+        function setBgOnly(bg) {
+            console.log(`🎨 Установка фона: ${bg}`);
+            document.body.setAttribute('data-bg', bg);
+            updateDebugInfo();
+        }
+        
+        function updateDebugInfo() {
+            document.getElementById('body-classes').textContent = document.body.className;
+            document.getElementById('data-bg').textContent = document.body.getAttribute('data-bg');
+            
+            const computedStyle = window.getComputedStyle(document.body);
+            const bgImage = computedStyle.backgroundImage;
+            const bgColor = computedStyle.backgroundColor;
+            
+            // Показываем только начало URL для читаемости
+            let shortBgImage = bgImage;
+            if (bgImage.includes('data:image/svg+xml')) {
+                if (bgImage.includes('fill-opacity%3D%270.03%27')) {
+                    shortBgImage = 'PAPER texture (точки)';
+                } else if (bgImage.includes('fill-opacity%3D%270.15%27')) {
+                    shortBgImage = 'WARM-GRID texture (клетка)';
+                } else {
+                    shortBgImage = 'SVG texture (неизвестный)';
+                }
+            }
+            
+            document.getElementById('computed-bg').innerHTML = 
+                `Color: ${bgColor}<br>Image: ${shortBgImage}`;
+        }
+        
+        // Инициализация
+        updateDebugInfo();
+        
+        // Обновляем каждую секунду
+        setInterval(updateDebugInfo, 1000);
+        
+        // Логирование для отладки
+        console.log('🚀 Отладчик фонов загружен');
+        console.log('📋 Текущие CSS переменные:');
+        console.log('--paper-texture:', getComputedStyle(document.documentElement).getPropertyValue('--paper-texture'));
+        console.log('--warm-grid-texture:', getComputedStyle(document.documentElement).getPropertyValue('--warm-grid-texture'));
+    </script>
+</body>
+</html>
