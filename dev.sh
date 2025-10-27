@@ -6,8 +6,8 @@ set -e
 echo "🚀 Запуск 5chairs локально..."
 
 # Переменные окружения
-export PGPASSWORD="fNheHqmosfiPdHULGCICNHZuXwUyNvLQ"
-export DATABASE_URL="postgresql://postgres:${PGPASSWORD}@trolley.proxy.rlwy.net:55436/railway"
+export PGPASSWORD="YOUR_PASSWORD"
+export DATABASE_URL="postgresql://postgres:YOUR_PASSWORD@example.com:5432/database"
 export BOT_TOKEN="dev_bot_token"
 export BOT_USERNAME="dev_bot_username"
 export TEST_MODE="true"

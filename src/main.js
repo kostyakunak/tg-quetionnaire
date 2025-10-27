@@ -917,15 +917,15 @@ class App {
                 <div class="intro-content-wrapper">
                     <div class="intro-card">
                         <div class="intro-block">
-                            <p>Что сейчас будет:</p>
-                            <p>— ✍️ ты проходишь короткую анкету<br>(12 вопросов)</p>
-                            <p>— 🧠 мы подбираем пятёрку людей на твоей волне — с помощью AI, психологии и немного магии</p>
+                            <p>What's coming next:</p>
+                            <p>— ✍️ you'll fill out a short questionnaire<br>(12 questions)</p>
+                            <p>— 🧠 we'll match you with five people on your wavelength — using AI, psychology, and a bit of magic</p>
                             <div class="intro-hint" style="margin-top:12px; font-size:14px; line-height:1.4;">
-                                <p><strong>Анкета — не тест и не допрос.</strong></p>
-                                <p>Просто способ понять, с какими людьми у тебя возникнет химия 🧬</p>
+                                <p><strong>This isn't a test or an interrogation.</strong></p>
+                                <p>Just a way to understand who you'll have chemistry with 🧬</p>
                             </div>
                         </div>
-                        <button id="introStartBtn" class="cta-button">🚀 Поехали!</button>
+                        <button id="introStartBtn" class="cta-button">🚀 Let's go!</button>
                     </div>
                 </div>
             </div>
@@ -1042,19 +1042,19 @@ class App {
     }
 
     showGreetingAndNameStep() {
-        const content = `
+                const content = `
             <div class="question-content intro-content">
                 <div class="intro-message">
                     <div class="name-input-section">
-                        <h3 class="name-question-title">Как тебя зовут?</h3>
+                        <h3 class="name-question-title">What's your name?</h3>
                         <div class="text-answer">
-                            <input type="text" id="introName" placeholder="Твоё имя" class="intro-input" />
+                            <input type="text" id="introName" placeholder="Your name" class="intro-input" />
                         </div>
                     </div>
                 </div>
                 <div class="question-navigation">
                     <div></div>
-                    <button id="introNext1" class="next-button" disabled>Далее</button>
+                    <button id="introNext1" class="next-button" disabled>Next</button>
                 </div>
             </div>
         `
@@ -1066,7 +1066,7 @@ class App {
         const greetingElement = document.createElement('div')
         greetingElement.className = 'greeting-outside-card anchored-to-card'
         greetingElement.innerHTML = `
-            <h2 class="greeting-text">Ты здесь — значит, знакомство начинается. 👋</h2>
+            <h2 class="greeting-text">You're here — which means the introduction starts. 👋</h2>
         `
         
         // Находим карточку и добавляем к ней приветствие
@@ -1100,17 +1100,17 @@ class App {
         const content = `
             <div class="question-content intro-content">
                 <div class="intro-message">
-                    <h2 class="question-text">И сколько тебе лет?</h2>
+                    <h2 class="question-text">And how old are you?</h2>
                     <div class="name-input-section">
                         <div class="text-answer">
-                            <input type="number" id="introAge" min="18" max="100" placeholder="Сколько тебе лет?" class="intro-input" />
+                            <input type="number" id="introAge" min="18" max="100" placeholder="How old are you?" class="intro-input" />
                         </div>
                         <div id="ageError" class="error-message hidden"></div>
                     </div>
                 </div>
                 <div class="question-navigation">
-                    <button id="introBack" class="prev-button">Назад</button>
-                    <button id="introNext3" class="next-button" disabled>Далее</button>
+                    <button id="introBack" class="prev-button">Back</button>
+                    <button id="introNext3" class="next-button" disabled>Next</button>
                 </div>
             </div>
         `
@@ -1143,13 +1143,13 @@ class App {
                     try {
                         const raw = ageInput.value.trim()
                         if (!/^\d+$/.test(raw)) {
-                            errBox.textContent = "Пожалуйста, введи корректный возраст."
+                            errBox.textContent = "Please enter a valid age."
                             errBox.classList.remove('hidden')
                             return
                         }
                         const age = parseInt(raw, 10)
                         if (age < 18 || age > 100) {
-                            errBox.textContent = "Пожалуйста, введи возраст от 18 до 100 лет."
+                            errBox.textContent = "Please enter an age between 18 and 100."
                             errBox.classList.remove('hidden')
                             return
                         }
@@ -1157,7 +1157,7 @@ class App {
                         this.profile.surname = '-'
                         this.animateToQuestionnaireIntro()
                     } catch (e) {
-                        errBox.textContent = "Извини, произошла ошибка. Попробуй еще раз."
+                        errBox.textContent = "Sorry, an error occurred. Please try again."
                         errBox.classList.remove('hidden')
                     }
                 }
@@ -1220,19 +1220,19 @@ class App {
         const content = `
             <div class="question-content intro-content">
                 <div class="intro-message">
-                    <h2 class="question-text">Что сейчас будет:</h2>
+                    <h2 class="question-text">What's coming next:</h2>
                     <div class="intro-steps">
-                        <p>— ✍️ ты проходишь короткую анкету<br>(12 вопросов)</p>
-                        <p>— 🧠 мы подбираем пятёрку людей на твоей волне — с помощью AI, психологии и немного магии</p>
+                        <p>— ✍️ you'll fill out a short questionnaire<br>(12 questions)</p>
+                        <p>— 🧠 we'll match you with five people on your wavelength — using AI, psychology, and a bit of magic</p>
                     </div>
                     <div class="intro-hint">
-                        <p><strong>Анкета — не тест и не допрос.</strong></p>
-                        <p>Просто способ понять, с какими людьми у тебя возникнет химия 🧬</p>
+                        <p><strong>This isn't a test or an interrogation.</strong></p>
+                        <p>Just a way to understand who you'll have chemistry with 🧬</p>
                     </div>
                 </div>
                 <div class="question-navigation">
-                    <button id="introBackToAge" class="prev-button">Назад</button>
-                    <button id="introStartQuestionnaire" class="next-button">🚀 Поехали!</button>
+                    <button id="introBackToAge" class="prev-button">Back</button>
+                    <button id="introStartQuestionnaire" class="next-button">🚀 Let's go!</button>
                 </div>
             </div>
         `
