@@ -1172,7 +1172,7 @@ class App {
         const content = `
             <div class="question-content intro-content">
                 <div class="intro-message">
-                    <h2 class="question-text">Ты здесь — значит, знакомство начинается. 👋</h2>
+                    <h2 class="question-text">You're here — which means the introduction starts. 👋</h2>
                 </div>
                 <div class="answer-container">
                     <div class="text-answer">
