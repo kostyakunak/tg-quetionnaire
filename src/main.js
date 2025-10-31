@@ -209,7 +209,7 @@ class App {
             if (!profile || !profile.name || !profile.age) {
                 console.log('📝 Creating profile from Telegram data')
                 profile = {
-                    name: telegramData.first_name || 'Пользователь',
+                    name: telegramData.first_name || 'User',
                     surname: telegramData.last_name || '-',
                     age: 25 // Default age, можно попросить пользователя указать позже
                 }
@@ -254,7 +254,7 @@ class App {
             
             // Show error message but still show success screen
             console.log('⚠️ Showing error alert to user')
-            alert('Данные сохранены, но произошла ошибка при отправке. Мы свяжемся с вами.')
+            alert('Data saved, but an error occurred while submitting. We will contact you.')
             
             console.log('🎯 Calling showSuccessScreen() despite error...')
             this.showSuccessScreen()
@@ -816,7 +816,7 @@ class App {
         const age = parseInt(document.getElementById('profileAge').value)
 
         if (!name || !age || age < 18 || age > 100) {
-            alert('Пожалуйста, заполните все поля корректно')
+            alert('Please fill in all fields correctly')
             return
         }
 
@@ -845,7 +845,7 @@ class App {
             
         } catch (error) {
             console.error('Submission failed:', error)
-            alert('Произошла ошибка при отправке данных. Попробуйте еще раз.')
+            alert('An error occurred while submitting data. Please try again.')
         }
     }
 

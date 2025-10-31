@@ -330,7 +330,7 @@ export class QuestionnaireManager {
 
     renderTextQuestion(container) {
         const question = this.questions[this.currentQuestionIndex]
-        const placeholder = question?.instruction || 'Напиши свой ответ...'
+        const placeholder = question?.instruction || 'Write your answer...'
         container.innerHTML = `
             <div class="text-answer">
                 <textarea
@@ -358,10 +358,10 @@ export class QuestionnaireManager {
             html += `
                 <label class="choice-option other-option">
                     <input type="radio" name="singleChoice" value="other">
-                    <span class="option-text">Другое</span>
+                    <span class="option-text">Other</span>
                 </label>
                 <div class="other-input hidden">
-                    <input type="text" id="otherText" placeholder="Напишите ваш вариант...">
+                    <input type="text" id="otherText" placeholder="Write your option...">
                 </div>
             `
         }
@@ -386,10 +386,10 @@ export class QuestionnaireManager {
             html += `
                 <label class="choice-option other-option">
                     <input type="checkbox" value="other">
-                    <span class="option-text">Другое</span>
+                    <span class="option-text">Other</span>
                 </label>
                 <div class="other-input hidden">
-                    <input type="text" id="otherText" placeholder="Напишите ваш вариант...">
+                    <input type="text" id="otherText" placeholder="Write your option...">
                 </div>
             `
         }
@@ -632,7 +632,7 @@ export class QuestionnaireManager {
             case 'single_choice':
                 if (this.hasOther) {
                     // Mirror bot formatting for "other"
-                    return this.otherText ? `Другое: ${this.otherText}` : ''
+                    return this.otherText ? `Other: ${this.otherText}` : ''
                 } else {
                     const selectedRadio = document.querySelector('input[name="singleChoice"]:checked')
                     return selectedRadio ? selectedRadio.dataset.text : ''
@@ -652,7 +652,7 @@ export class QuestionnaireManager {
                 // Format answer
                 let answer = selectedTexts.join('; ')
                 if (this.hasOther && this.otherText) {
-                    answer += answer ? ` | Другое: ${this.otherText}` : `Другое: ${this.otherText}`
+                    answer += answer ? ` | Other: ${this.otherText}` : `Other: ${this.otherText}`
                 }
                 
                 return answer

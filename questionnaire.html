@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Анкета — Portfolio</title>
-    <meta name="description" content="Заполни анкету и найди свою компанию на встрече 5chairs">
+    <title>Questionnaire — Portfolio</title>
+    <meta name="description" content="Complete the questionnaire and find your match at the 5chairs meetup">
     <link rel="canonical" href="/questionnaire">
     <!-- Локальные шрифты для гарантированного отображения -->
     <link rel="stylesheet" href="/src/assets/fonts/fonts.css">
@@ -120,13 +120,13 @@
     <body class="stage-start bg-template-cellular">
     <div id="preloader" aria-hidden="true">
         <div class="ring">
-            <div class="node c1"><div class="sprite"><img src="/assets/chairs/chair1.svg" class="chair" alt="Стул 1"></div></div>
-            <div class="node c2"><div class="sprite"><img src="/assets/chairs/chair2.svg" class="chair" alt="Стул 2"></div></div>
-            <div class="node c3"><div class="sprite"><img src="/assets/chairs/chair3.svg" class="chair" alt="Стул 3"></div></div>
-            <div class="node c4"><div class="sprite"><img src="/assets/chairs/chair4.svg" class="chair" alt="Стул 4"></div></div>
-            <div class="node c5"><div class="sprite"><img src="/assets/chairs/chair5.svg" class="chair" alt="Стул 5"></div></div>
+            <div class="node c1"><div class="sprite"><img src="/assets/chairs/chair1.svg" class="chair" alt="Chair 1"></div></div>
+            <div class="node c2"><div class="sprite"><img src="/assets/chairs/chair2.svg" class="chair" alt="Chair 2"></div></div>
+            <div class="node c3"><div class="sprite"><img src="/assets/chairs/chair3.svg" class="chair" alt="Chair 3"></div></div>
+            <div class="node c4"><div class="sprite"><img src="/assets/chairs/chair4.svg" class="chair" alt="Chair 4"></div></div>
+            <div class="node c5"><div class="sprite"><img src="/assets/chairs/chair5.svg" class="chair" alt="Chair 5"></div></div>
         </div>
-        <div id="preloaderHint" class="hint">Загрузка задерживается… Проверьте интернет</div>
+        <div id="preloaderHint" class="hint">Loading is delayed... Check your internet connection</div>
     </div>
     <div id="app-container">
         <!-- Questionnaire Section -->
@@ -148,23 +148,23 @@
         <section id="profile" class="profile hidden">
             <div class="container">
                 <div class="profile-header">
-                    <h2>Последние штрихи</h2>
-                    <p>Нам нужно знать, как к тебе обращаться</p>
+                    <h2>Final touches</h2>
+                    <p>We need to know what to call you</p>
                 </div>
 
                 <div class="profile-form">
                     <div class="form-group">
-                        <label for="profileName">Имя *</label>
-                        <input type="text" id="profileName" required placeholder="Как тебя зовут?">
+                        <label for="profileName">Name *</label>
+                        <input type="text" id="profileName" required placeholder="What's your name?">
                     </div>
                     
                     <div class="form-group">
-                        <label for="profileAge">Возраст *</label>
-                        <input type="number" id="profileAge" required min="18" max="100" placeholder="Сколько тебе лет?">
+                        <label for="profileAge">Age *</label>
+                        <input type="number" id="profileAge" required min="18" max="100" placeholder="How old are you?">
                     </div>
 
                     <button id="completeButton" class="cta-button">
-                        Завершить и войти через Telegram
+                        Complete and sign in with Telegram
                     </button>
                 </div>
             </div>
