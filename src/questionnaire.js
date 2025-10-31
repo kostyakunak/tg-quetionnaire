@@ -289,8 +289,8 @@ export class QuestionnaireManager {
                     <h2 class="question-text">${this.escapeHTML(question.text)}</h2>
                     <div class="answer-container" id="answerContainer"></div>
                     <div class="question-navigation">
-                        ${this.currentQuestionIndex > 0 && this.canGoBack ? '<button id="prevButton" class="prev-button">Назад</button>' : '<div></div>'}
-                        <button id="nextButton" class="next-button" disabled>Далее</button>
+                        ${this.currentQuestionIndex > 0 && this.canGoBack ? '<button id="prevButton" class="prev-button">Back</button>' : '<div></div>'}
+                        <button id="nextButton" class="next-button" disabled>Next</button>
                     </div>
                 </div>
             `
@@ -303,8 +303,8 @@ export class QuestionnaireManager {
                     <div class="answer-container" id="answerContainer"></div>
                 </div>
                 <div class="question-navigation question-navigation-mobile">
-                    ${this.currentQuestionIndex > 0 && this.canGoBack ? '<button id="prevButton" class="prev-button">Назад</button>' : '<div></div>'}
-                    <button id="nextButton" class="next-button" disabled>Далее</button>
+                    ${this.currentQuestionIndex > 0 && this.canGoBack ? '<button id="prevButton" class="prev-button">Back</button>' : '<div></div>'}
+                    <button id="nextButton" class="next-button" disabled>Next</button>
                 </div>
             `
         }

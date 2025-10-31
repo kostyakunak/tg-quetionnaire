@@ -887,9 +887,9 @@ class App {
                 <div class="intro-content-wrapper">
                     <div class="intro-card greeting-card">
                         <div class="intro-message">
-                            <h2 class="question-text">Ты здесь — значит, знакомство начинается. 👋</h2>
+                            <h2 class="question-text">You're here — which means the introduction starts. 👋</h2>
                         </div>
-                        <button id="greetingNextBtn" class="cta-button">Далее</button>
+                        <button id="greetingNextBtn" class="cta-button">Next</button>
                     </div>
                 </div>
             </div>
@@ -1176,12 +1176,12 @@ class App {
                 </div>
                 <div class="answer-container">
                     <div class="text-answer">
-                        <input type="text" id="introName" placeholder="Как тебя зовут?" class="intro-input" value="${this.profile.name || ''}" />
+                        <input type="text" id="introName" placeholder="What's your name?" class="intro-input" value="${this.profile.name || ''}" />
                     </div>
                 </div>
                 <div class="question-navigation">
                     <div></div>
-                    <button id="introNext2" class="next-button" disabled>Далее</button>
+                    <button id="introNext2" class="next-button" disabled>Next</button>
                 </div>
             </div>
         `
