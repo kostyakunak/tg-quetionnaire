@@ -1,7 +1,7 @@
 # 🪑 5chairs Questionnaire
 Portfolio project based on real production work for Telegram dating service [5chairs](https://5chairs.app)
 
-**Live Demo:** https://tg-questionnaire.netlify.app
+**Live Demo:** https://5chairs-demo.netlify.app
 
 ## Project Overview
 
