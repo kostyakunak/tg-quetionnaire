@@ -334,6 +334,11 @@ class App {
             console.log('  - AnimatedBackground already exists, reusing')
         }
         
+        // Show demo modal about production redirect
+        setTimeout(() => {
+            this.showDemoModal('On the production version, you would now be redirected to launch the bot in Telegram.')
+        }, 500)
+        
         // Запускаем правильное конфетти только после полной загрузки страницы с задержкой в полсекунды
         if (document.readyState === 'complete') {
             // Страница уже полностью загружена
@@ -615,6 +620,69 @@ class App {
     }
 
     /**
+     * Show demo modal with production information
+     * @param {string} message - Message to display
+     * @param {Function} onClose - Callback function to call when modal is closed
+     */
+    showDemoModal(message, onClose = null) {
+        // Remove existing modal if any
+        const existingModal = document.querySelector('.demo-modal-overlay')
+        if (existingModal) {
+            existingModal.remove()
+        }
+
+        // Create modal overlay
+        const overlay = document.createElement('div')
+        overlay.className = 'demo-modal-overlay'
+        
+        const modal = document.createElement('div')
+        modal.className = 'demo-modal'
+        
+        const content = document.createElement('div')
+        content.className = 'demo-modal-content'
+        
+        const messageP = document.createElement('p')
+        messageP.textContent = message
+        
+        const button = document.createElement('button')
+        button.className = 'demo-modal-button'
+        button.textContent = 'Got it'
+        
+        content.appendChild(messageP)
+        content.appendChild(button)
+        modal.appendChild(content)
+        overlay.appendChild(modal)
+        
+        document.body.appendChild(overlay)
+
+        // Show modal with animation
+        requestAnimationFrame(() => {
+            overlay.classList.add('show')
+        })
+
+        // Function to close modal
+        const closeModal = () => {
+            overlay.classList.remove('show')
+            setTimeout(() => {
+                overlay.remove()
+                if (onClose) {
+                    onClose()
+                }
+            }, 300)
+        }
+
+        // Close modal on button click
+        button.addEventListener('click', closeModal)
+
+        // Close modal on overlay click
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                closeModal()
+            }
+        })
+    }
+
+    /**
      * Setup Telegram login button with direct redirect
      */
     setupTelegramLoginButton() {
@@ -629,17 +697,21 @@ class App {
             e.preventDefault()
             console.log('🔘 Demo auth click → simulate success without backend')
 
-            // Синтетические данные Telegram для демо
-            const demoTelegramData = {
-                id: 0,
-                first_name: 'Demo',
-                username: 'portfolio_user',
-                photo_url: null,
-                auth_date: Math.floor(Date.now() / 1000),
-                hash: 'demo'
-            }
+            // Show demo modal before proceeding
+            this.showDemoModal('On the production version of this page, you would now be asked to authorize through your Telegram account. This links your responses to your personal account, so you don\'t have to complete the questionnaire twice.', async () => {
+                // Proceed with auth after modal is closed
+                // Синтетические данные Telegram для демо
+                const demoTelegramData = {
+                    id: 0,
+                    first_name: 'Demo',
+                    username: 'portfolio_user',
+                    photo_url: null,
+                    auth_date: Math.floor(Date.now() / 1000),
+                    hash: 'demo'
+                }
 
-            await this.handleTelegramAuthSuccess(demoTelegramData)
+                await this.handleTelegramAuthSuccess(demoTelegramData)
+            })
         })
     }
 
