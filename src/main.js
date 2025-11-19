@@ -12,8 +12,11 @@ class App {
         this.apiClient = new ApiClient()
         this.currentSection = 'hero'
         this.currentStage = 'start' // start, intro, questionnaire
-        this.answers = this.loadAnswersFromStorage() // Load from localStorage
-        this.profile = this.loadProfileFromStorage() // Load from localStorage
+        
+        // Demo version: clear localStorage to prevent skipping questions
+        this.clearStoredData()
+        this.answers = []
+        this.profile = {}
         
         // Debug logging
         console.log('🔍 Constructor: answers loaded:', this.answers)
@@ -113,13 +116,13 @@ class App {
             return
         }
         
-        // Also check if questionnaire was already completed (even without hash)
-        if (this.answers.length > 0) {
-            console.log('📋 Questionnaire already completed, showing success screen directly')
-            this.hidePreloader()
-            this.skipIntroAndGoToQuestionnaire()
-            return
-        }
+        // Demo version: skip check for completed questionnaire
+        // if (this.answers.length > 0) {
+        //     console.log('📋 Questionnaire already completed, showing success screen directly')
+        //     this.hidePreloader()
+        //     this.skipIntroAndGoToQuestionnaire()
+        //     return
+        // }
         
         this.bindEvents()
         await this.loadQuestions()

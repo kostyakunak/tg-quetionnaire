@@ -185,29 +185,15 @@ export class QuestionnaireManager {
 
         this.setupScrollContainer()
 
-        // Restore progress if exists
+        // Demo version: always start from the beginning, don't restore progress
+        // Clear any saved progress
         try {
-            const savedAnswers = JSON.parse(localStorage.getItem('answers') || '[]')
-            const savedIndex = parseInt(localStorage.getItem('currentIndex') || '0', 10)
-            const questionsLen = this.questions.length
-            if (Array.isArray(savedAnswers) && savedAnswers.length > 0) {
-                if (savedIndex >= questionsLen || savedAnswers.length >= questionsLen) {
-                    localStorage.removeItem('answers')
-                    localStorage.removeItem('currentIndex')
-                    this.currentQuestionIndex = 0
-                    this.answers = []
-                } else {
-                    this.answers = savedAnswers
-                    this.currentQuestionIndex = Math.min(Math.max(savedIndex, 0), questionsLen - 1)
-                }
-            } else {
-                this.currentQuestionIndex = 0
-                this.answers = []
-            }
-        } catch (_) {
-            this.currentQuestionIndex = 0
-            this.answers = []
-        }
+            localStorage.removeItem('answers')
+            localStorage.removeItem('currentIndex')
+        } catch (_) {}
+        
+        this.currentQuestionIndex = 0
+        this.answers = []
         this.showCurrentQuestion()
     }
 
