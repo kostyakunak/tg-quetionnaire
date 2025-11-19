@@ -334,11 +334,6 @@ class App {
             console.log('  - AnimatedBackground already exists, reusing')
         }
         
-        // Show demo modal about production redirect
-        setTimeout(() => {
-            this.showDemoModal('On the production version, you would now be redirected to launch the bot in Telegram.')
-        }, 500)
-        
         // Запускаем правильное конфетти только после полной загрузки страницы с задержкой в полсекунды
         if (document.readyState === 'complete') {
             // Страница уже полностью загружена
@@ -927,6 +922,12 @@ class App {
         if (!botLink) return
         // В портфолио-версии не ведём на 5chairs; оставим якорь
         botLink.href = '#'
+        
+        // Show demo modal when clicking the bot link button
+        botLink.addEventListener('click', (e) => {
+            e.preventDefault()
+            this.showDemoModal('On the production version, you would now be redirected to launch the bot in Telegram.')
+        })
     }
 
     extractUtmParams() {
